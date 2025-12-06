@@ -1,0 +1,23 @@
+[project]
+name = "capstone-api"
+version = "0.1.0"
+description = "Lemon Tree Disease Identification API - A plant disease identification system using computer vision and LLM"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic[email]>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "sqlmodel>=0.0.22",
+    "python-multipart>=0.0.12",
+    "httpx>=0.27.0",
+    "loguru>=0.7.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["capstone_api"]
