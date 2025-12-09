@@ -20,7 +20,7 @@ class_num = 9
 class_names = ['Anthracnose', 'Bacterial Blight', 'Citrus Canker', 'Curl Virus', 'Deficiency Leaf', 'Dry Leaf', 'Healthy Leaf', 'Sooty Mould', 'Spider Mites']
 
 # set up torch to use either cuda or cpu
-if torch.cuda.is_available:
+if torch.cuda.is_available():
     device = torch.device("cuda")
 else:
     device = torch.device("cpu")
