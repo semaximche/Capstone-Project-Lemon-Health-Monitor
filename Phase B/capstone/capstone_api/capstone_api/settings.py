@@ -101,6 +101,10 @@ class Settings(BaseSettings):
     ollama_model: str = Field(default="llama3", description="Ollama model to use")
 
 
+    # Rabbitmq settings
+    queue_host: str = Field(default="localhost", description="Rabbitmq server host")
+    queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
+
 @lru_cache
 def get_settings() -> Settings:
     """Get cached application settings."""
