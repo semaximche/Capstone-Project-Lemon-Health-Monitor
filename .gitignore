@@ -4,7 +4,6 @@
 
 Phase B/Backup
 Phase B/Model Training/runs
-*.pt
 
 # ----------------
 # Python gitignore
