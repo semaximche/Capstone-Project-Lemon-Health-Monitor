@@ -29,7 +29,7 @@ else:
 yolo_model = YOLO('inference/yolo100epochs.pt')
 
 # load efficientnet model
-efficientnet_model = torch.load('inference/efficientnet50epochs.pth', weights_only=False)
+efficientnet_model = torch.load('inference/efficientnet50epochs.pth', weights_only=False, map_location=device)
 
 # compose transform
 test_transform = transforms.Compose([
