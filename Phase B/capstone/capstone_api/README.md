@@ -143,7 +143,7 @@ capstone_api/
 
 ```bash
 # Clone the repository
-cd capstone_api
+cd app
 
 # Install dependencies using uv
 uv sync
@@ -155,7 +155,7 @@ cp .env.example .env
 # uv run alembic upgrade head
 
 # Start the development server
-uv run uvicorn capstone_api.main:app --reload
+uv run uvicorn app.main:app --reload
 ```
 
 ### Environment Variables

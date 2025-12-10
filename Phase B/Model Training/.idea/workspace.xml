@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6832c57c-46ab-4846-bb64-d366c28f2c19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/inference/services/health_analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inference/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inference/minimalist_inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/minimalist_inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/db/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/routes/v1/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/routes/v1/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/services/analysis_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/services/analysis_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/utils/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/utils/rabbitmq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

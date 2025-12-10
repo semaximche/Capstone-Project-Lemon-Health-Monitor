@@ -23,13 +23,12 @@ def process_image(image_bytes: bytes):
 
 
 def callback(ch, method, properties, body: bytes):
+
     print("Received task from RabbitMQ")
 
-    # Body is JSON with base64 image
     data = json.loads(body)
     img_b64 = data["image_path"]
 
-    # Convert back to bytes
     image_bytes = base64.b64decode(img_b64)
 
     # Run the detection
