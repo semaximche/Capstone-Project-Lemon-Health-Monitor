@@ -27,7 +27,8 @@ class Settings(BaseSettings):
     # Database settings
     database_url: str = Field(
         # default="postgresql://postgres:postgres@localhost:5432/capstone",
-        default="sqlite:///./data/test.db",
+        default="sqlite:///C:/projects/mydb.sqlite3",
+        # default="sqlite:///./data/mydb.sqlite3",
         description="Database connection URL",
     )
 
@@ -103,7 +104,7 @@ class Settings(BaseSettings):
 
 
     # Rabbitmq settings
-    queue_host: str = Field(default="rabbitmq", description="Rabbitmq server host")
+    queue_host: str = Field(default="localhost", description="Rabbitmq server host")
     queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
 
 @lru_cache

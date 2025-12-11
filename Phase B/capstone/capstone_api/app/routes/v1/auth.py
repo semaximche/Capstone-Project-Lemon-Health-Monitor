@@ -1,77 +1,39 @@
 """Authentication routes for Google OAuth integration."""
 from http.client import HTTPException
 
-from fastapi import APIRouter, Query
-
+from sqlalchemy.orm import Session
+from fastapi import APIRouter, Query , Depends
+from app.db.db import get_db
 from app.core.dependencies import CurrentUser
 from app.db.models import User
-from app.db.session import SessionDep
 from app.models.auth import (
     CurrentUserResponse,
     LoginResponse,
     LogoutResponse,
-    TokenResponse, UserCreate,
+    TokenResponse, UserCreate,LoginRequest
 )
-from app.services.auth_service import auth_service
-
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-@router.get(
+@router.post(
     "/login",
     response_model=LoginResponse,
-    summary="Initiate Google OAuth Login",
-    description="Returns the Google OAuth authorization URL for user authentication.",
+    summary="Login",
+    description="Check user credentials",
 )
-async def login() -> LoginResponse:
-    """Initiate the Google OAuth login flow."""
-    raise NotImplementedError()
+async def login(request: LoginRequest, db: Session = Depends(get_db)) -> LoginResponse:
+    """
+    Validate user credentials using SQLAlchemy session.
+    """
+    user  = db.query(User).filter(User.user_name == request.user_name).first()
+    if not user:
+        raise HTTPException()
 
+    if not (user.password == request.password):
+        raise HTTPException()
 
-@router.post(
-    "/signin",
-    response_model=LoginResponse,
-    summary="Sign Up (Registration)",
-    description="Creates a new user with username and password and returns a token.",
-)
-async def signin(
-        user_data: UserCreate,
-        db: SessionDep,
-) -> LoginResponse:
-    new_user: User | None = await auth_service.local_signup(
-        username=user_data.username,
-        password=user_data.password,
-        db=db
-    )
-    if new_user is None:
-        raise HTTPException(
-            detail="Username already registered."
-        )
-    # Placeholder for Token Generation
-    fake_token = f"auth_token_for_user_{new_user.id}"
-    return LoginResponse(
-        token=fake_token,
-        user_id=new_user.id
-    )
-
-
-
-
-
-
-@router.get(
-    "/callback",
-    response_model=TokenResponse,
-    summary="OAuth Callback",
-    description="Handle the Google OAuth callback and exchange the authorization code for tokens.",
-)
-async def oauth_callback(
-    code: str = Query(..., description="Authorization code from Google"),
-    state: str | None = Query(default=None, description="State parameter for CSRF verification"),
-) -> TokenResponse:
-    """Handle the Google OAuth callback."""
-    raise NotImplementedError()
-
+    # Login successful
+    return LoginResponse(user_name=request.user_name,auth_url="logged_in", state="checked")
 
 @router.post(
     "/logout",

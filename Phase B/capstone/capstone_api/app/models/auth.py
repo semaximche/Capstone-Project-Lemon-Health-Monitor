@@ -1,5 +1,5 @@
 """Authentication-related Pydantic models."""
-
+from sqlalchemy.orm import Mapped, mapped_column
 from pydantic import BaseModel, Field
 
 class UserCreate(BaseModel):
@@ -25,7 +25,7 @@ class GoogleAuthCallback(BaseModel):
 
 class LoginResponse(BaseModel):
     """Login initiation response."""
-
+    user_name : str = Field(description="logged in user name")
     auth_url: str = Field(description="URL to redirect user for authentication")
     state: str = Field(description="State parameter for CSRF protection")
 
@@ -34,6 +34,10 @@ class LogoutResponse(BaseModel):
     """Logout response."""
 
     message: str = Field(default="Successfully logged out")
+
+class LoginRequest(BaseModel):
+    user_name: str
+    password: str
 
 
 class CurrentUserResponse(BaseModel):
