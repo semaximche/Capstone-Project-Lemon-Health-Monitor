@@ -25,9 +25,7 @@ class GoogleAuthCallback(BaseModel):
 
 class LoginResponse(BaseModel):
     """Login initiation response."""
-    user_name : str = Field(description="logged in user name")
-    auth_url: str = Field(description="URL to redirect user for authentication")
-    state: str = Field(description="State parameter for CSRF protection")
+    access_token: str | None = Field(description="JWT access token")
 
 
 class LogoutResponse(BaseModel):

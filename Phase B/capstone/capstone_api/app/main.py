@@ -1,8 +1,6 @@
 """Main FastAPI application entry point."""
-
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-
 from app.core.o11y.logger import init_logger
 from app.middlewares.logging_middleware import LoggingMiddleware
 from app.models.common import Message
@@ -38,6 +36,9 @@ app.include_router(router=health_router, tags=["health"])
 def root() -> Message:
     """Root endpoint returning a welcome message."""
     return Message(message="Welcome to Capstone API - Lemon Tree Disease Identification System")
+
+
+
 
 
 if __name__ == "__main__":

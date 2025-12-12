@@ -5,7 +5,6 @@ from uuid import UUID
 from fastapi import APIRouter, Query, status
 
 from app.core.dependencies import CurrentUser
-from app.models.analysis import AnalysisListResponse
 from app.models.plant import (
     PlantCreate,
     PlantListResponse,
@@ -88,18 +87,3 @@ async def delete_plant(
     """Delete a plant."""
     raise NotImplementedError()
 
-
-@router.get(
-    "/{plant_id}/analysis",
-    response_model=AnalysisListResponse,
-    summary="List Plant Analyses",
-    description="List all analyses for a specific plant.",
-)
-async def list_plant_analyses(
-    plant_id: UUID,
-    current_user: CurrentUser,
-    page: int = Query(default=1, ge=1, description="Page number"),
-    page_size: int = Query(default=20, ge=1, le=100, description="Items per page"),
-) -> AnalysisListResponse:
-    """List analyses for a plant."""
-    raise NotImplementedError()

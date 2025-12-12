@@ -1,17 +1,18 @@
 """Authentication routes for Google OAuth integration."""
 from http.client import HTTPException
-
+from app.services.user_service import user_service
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Query , Depends
 from app.db.db import get_db
 from app.core.dependencies import CurrentUser
-from app.db.models import User
+from app.core.security import verify_password,create_access_token
 from app.models.auth import (
     CurrentUserResponse,
     LoginResponse,
     LogoutResponse,
     TokenResponse, UserCreate,LoginRequest
 )
+from app.settings import settings
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
@@ -21,19 +22,19 @@ router = APIRouter(prefix="/auth", tags=["auth"])
     summary="Login",
     description="Check user credentials",
 )
-async def login(request: LoginRequest, db: Session = Depends(get_db)) -> LoginResponse:
+def login(request: LoginRequest, db: Session = Depends(get_db)) -> LoginResponse:
     """
     Validate user credentials using SQLAlchemy session.
     """
-    user  = db.query(User).filter(User.user_name == request.user_name).first()
-    if not user:
-        raise HTTPException()
 
-    if not (user.password == request.password):
-        raise HTTPException()
+    user = user_service.get_user_by_username(db, request.user_name)
+    if not user or not verify_password(request.password, user.password):
+        raise HTTPException(
+        )
 
-    # Login successful
-    return LoginResponse(user_name=request.user_name,auth_url="logged_in", state="checked")
+    access_token = create_access_token(data={"sub": user.id},expires_minutes=settings.jwt_access_token_expire_minutes)
+
+    return LoginResponse(access_token=access_token)
 
 @router.post(
     "/logout",

@@ -5,14 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6832c57c-46ab-4846-bb64-d366c28f2c19" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/inference/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/analysis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/crud/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/crud/analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/llm_model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/models/analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/models/queue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/storage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/storage/minio_storage_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/storage/minio_storage_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/app/storage/storage_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/db/db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/db/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/crud/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/crud/analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/storage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/storage/minio_storage_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/storage/storage_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/minimalist_inference.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/minimalist_inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/minimalist_inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/efficientnet50epochs.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/inference_matplotlib.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/minimalist_inference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/services/health_analyzer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/services/rabbitmq_worker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/anthracnose.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/bad_soil1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/bad_soil2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/citrus_canker.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/curl_virus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/dehydration.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/demo_image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/iron_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/magnesium_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/nitrogen_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/sooty_mould.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/spider_mites1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/spider_mites2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/test2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/test3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/test_images/zinc_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/yolo100epochs.pt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/routes/v1/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/routes/v1/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/services/analysis_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/services/analysis_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/utils/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/capstone_api/utils/rabbitmq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/db/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/models/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/models/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/plants.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/routes/v1/plants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/services/analysis_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/services/analysis_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/app/utils/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/app/utils/rabbitmq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone/capstone_api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone/capstone_api/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +74,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Dockerfile" />
         <option value="Python Script" />
       </list>
     </option>
@@ -50,19 +103,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.minimalist_inference.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;david&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/college/פרויקט סוף/capstone/Capstone-Project-Lemon-Health-Monitor/Phase B/Model Training&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main (1).executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.minimalist_inference.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "david",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/college/final_project/capstone/Capstone-Project-Lemon-Health-Monitor/Phase B/Model Training/inference/app"
   }
-}</component>
-  <component name="RunManager" selected="Python.minimalist_inference">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\Model Training\inference\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\Model Training\inference\app\analysis" />
+      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\Model Training" />
+      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\Model Training\inference" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Model Training" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/inference/app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inference/app/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Model Training" />
       <option name="ENV_FILES" value="" />
@@ -86,12 +172,9 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.minimalist_inference" />
-      <item itemvalue="Python.main" />
-    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -112,5 +195,16 @@
       <updated>1765279995419</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

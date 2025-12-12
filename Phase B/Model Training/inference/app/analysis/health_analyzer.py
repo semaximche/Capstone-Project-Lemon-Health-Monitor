@@ -3,9 +3,6 @@ import torchvision.transforms as transforms
 from ultralytics import YOLO
 import cv2
 import PIL.Image
-import numpy as np  # Still needed for potential future use, though not directly used in analyze now
-import base64  # Not needed, but kept for context consistency
-import io  # Not needed, but kept for context consistency
 from typing import List, Dict, Any
 
 
@@ -24,8 +21,8 @@ class LemonHealthAnalyzer:
                    'Deficiency Leaf', 'Dry Leaf', 'Healthy Leaf', 'Sooty Mould', 'Spider Mites']
 
     # File Paths
-    YOLO_WEIGHTS_PATH = 'inference/yolo100epochs.pt'
-    EFFICIENTNET_WEIGHTS_PATH = 'inference/efficientnet50epochs.pth'
+    YOLO_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
+    EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnet50epochs.pth'
 
     def __init__(self):
         """Initializes the device, models, and image transforms."""

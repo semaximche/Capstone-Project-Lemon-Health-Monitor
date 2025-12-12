@@ -33,14 +33,14 @@ class Settings(BaseSettings):
     )
 
     # Object Storage settings (for image storage)
-    storage_type: str = Field(
-        default="local",
+    storage_host: str = Field(
+        default="C:\\projects\\data",
         description="Storage type: local, s3, minio, or firebase",
     )
-    storage_bucket: str = Field(default="capstone-images", description="Storage bucket name")
-    storage_endpoint: str | None = Field(default=None, description="Storage endpoint URL (for S3/Minio)")
-    storage_access_key: str | None = Field(default=None, description="Storage access key")
-    storage_secret_key: str | None = Field(default=None, description="Storage secret key")
+    storage_bucket: str = Field(default="analysis", description="Storage bucket name")
+    storage_endpoint: str | None = Field(default="users", description="Storage endpoint URL (for S3/Minio)")
+    storage_access_key: str | None = Field(default="admin", description="Storage access key")
+    storage_secret_key: str | None = Field(default="admin12345", description="Storage secret key")
 
     # Google OAuth settings
     google_client_id: str | None = Field(default=None, description="Google OAuth client ID")
@@ -52,7 +52,7 @@ class Settings(BaseSettings):
 
     # JWT settings
     jwt_secret_key: str = Field(
-        default="change-me-in-production",
+        default="f4d34c2b0af0c67da891b63be1d2ccfb3a1ec9d5afbb08be71a47b31f28d9c62",
         description="Secret key for JWT token signing",
     )
     jwt_algorithm: str = Field(default="HS256", description="JWT algorithm")

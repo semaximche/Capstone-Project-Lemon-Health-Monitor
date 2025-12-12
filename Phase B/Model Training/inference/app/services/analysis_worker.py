@@ -1,9 +1,12 @@
+import uuid
 import pika
 import json
 import base64
 import tempfile
-import os
-from .health_analyzer import health_analyzer
+from inference.app.analysis.health_analyzer import health_analyzer
+from inference.app.db.db import get_db
+from inference.app.crud.analysis import analysis_crud
+from inference.app.storage.storage_service import storage_service
 
 
 def process_image(image_bytes: bytes):
@@ -12,12 +15,32 @@ def process_image(image_bytes: bytes):
         tmp.write(image_bytes)
         tmp_path = tmp.name
 
-    # Analyze using  model
+    # Analyze using  AI model
     results = health_analyzer.analyze(tmp_path)
-    print("analysis results:")
-    print(results)
-    # Delete temp file
-    os.remove(tmp_path)
+    object_id = uuid.uuid4()
+
+    #need to provide user_id in the future instead of 1234
+    presigned_url =  storage_service.upload_file(f"users\\1234\\analysis\\{object_id}",tmp_path)
+    #modify results to our needs and get real URL
+
+    print("pre signed url")
+    print(presigned_url)
+    db_gen = get_db()
+    db = next(db_gen)
+    try:
+        new_analysis = {
+            "presigned_url": str(presigned_url),
+            "description": str(results),
+        }
+        analysis_crud.create(db,new_analysis)
+        print(f"Inserted analysis")
+
+    except Exception as e:
+        print(f"Error inserting analysis: {e}")
+        db.close()
+
+    finally:
+        db.close()
 
     return results
 
@@ -25,18 +48,15 @@ def process_image(image_bytes: bytes):
 def callback(ch, method, properties, body: bytes):
 
     print("Received task from RabbitMQ")
-
     data = json.loads(body)
-    img_b64 = data["image_path"]
+    img_b64 = data["image"]
 
     image_bytes = base64.b64decode(img_b64)
 
     # Run the detection
-    results = process_image(image_bytes)
+    process_image(image_bytes)
 
     print("Analysis complete:")
-    print(results)
-
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 

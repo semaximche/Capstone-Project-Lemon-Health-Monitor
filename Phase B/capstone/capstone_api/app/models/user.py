@@ -33,14 +33,9 @@ class UserResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-    id: UUID
-    email: EmailStr
-    name: str
-    google_id: str
-    picture: str | None = None
-    settings: UserSettings
-    created_at: datetime
-    updated_at: datetime | None = None
+    id: str
+    user_name: str
+    password: str
 
 
 class UserSettingsResponse(BaseModel):

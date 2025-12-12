@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String,ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.db.db import Base
+from inference.app.db.db import Base
 import uuid
 
 

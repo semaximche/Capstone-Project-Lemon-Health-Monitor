@@ -1,29 +1,22 @@
 """Analysis service for image analysis pipeline operations."""
 import base64
-import uuid
-from datetime import datetime
 from http.client import HTTPException
-from uuid import UUID
 from app.utils.rabbitmq import publisher
-from fastapi import UploadFile
-from fastapi import APIRouter, File, Form, Query, UploadFile, status
-from app.db.models import User
+from fastapi import  UploadFile
 from app.models.analysis import (
-    AnalysisHistoryResponse,
-    AnalysisListResponse,
     AnalysisResponse,
 )
-
-
+from app.crud.analysis import analysis_crud
+from sqlalchemy.orm import Session
+from app.db.models import User
 class AnalysisService:
     """Service for handling image analysis operations."""
 
     async def create_analysis(
         self,
-        # user: User, // add user later
+        user: User,
         image: UploadFile,
-        analysis_id: uuid,
-        notes: str | None = None,
+
     ) -> AnalysisResponse:
         """
         Create a new image analysis.
@@ -32,9 +25,8 @@ class AnalysisService:
         image_base64 = base64.b64encode(image_bytes).decode('utf-8')
 
         job_payload = {
-            "analysis_id": str(analysis_id),
+            "user_id": user.id,
             "image": image_base64,
-
         }
         try:
             print("start publish")
@@ -45,108 +37,37 @@ class AnalysisService:
 
             )
 
-        return AnalysisResponse(status="nice")
+        return AnalysisResponse(status="analysis sent to queue")
 
     async def get_analysis(
         self,
-        user: User,
-        analysis_id: UUID,
+        # user: User,
+        analysis_id: str,
+        db: Session
     ) -> AnalysisResponse | None:
         """
         Get an analysis by ID.
-
-        Args:
-            user: The authenticated user
-            analysis_id: The analysis UUID
-
-        Returns:
-            AnalysisResponse | None: Analysis data or None if not found
-
-        TODO: Implement analysis retrieval.
         """
-        raise NotImplementedError("Get analysis not implemented")
 
-    async def list_analyses_for_plant(
+        response = analysis_crud.get(db,str(analysis_id))
+        if response:
+            analysis_response = AnalysisResponse(analysis_id=response.id,status="ok",description=response.description)
+            return analysis_response
+        return None
+
+    async def delete_analysis(
         self,
-        user: User,
-        plant_id: UUID,
-        page: int = 1,
-        page_size: int = 20,
-    ) -> AnalysisListResponse:
+        analysis_id: str,
+        db: Session)-> bool | None:
         """
-        List all analyses for a specific plant.
-
-        Args:
-            user: The authenticated user
-            plant_id: The plant's UUID
-            page: Page number (1-indexed)
-            page_size: Number of items per page
-
-        Returns:
-            AnalysisListResponse: Paginated list of analyses
-
-        TODO: Implement analysis listing with pagination.
+        Delete analysis by ID.
         """
-        raise NotImplementedError("List analyses for plant not implemented")
-
-    async def get_analysis_history(
-        self,
-        user: User,
-        start_date: datetime | None = None,
-        end_date: datetime | None = None,
-        plant_id: UUID | None = None,
-    ) -> AnalysisHistoryResponse:
-        """
-        Get analysis history with trends.
-
-        Args:
-            user: The authenticated user
-            start_date: Optional start date filter
-            end_date: Optional end date filter
-            plant_id: Optional plant ID filter
-
-        Returns:
-            AnalysisHistoryResponse: Historical analysis data with trends
-
-        TODO: Implement history retrieval with trend analysis.
-        """
-        raise NotImplementedError("Get analysis history not implemented")
-
-    async def run_analysis_pipeline(self, analysis_id: UUID) -> AnalysisResponse:
-        """
-        Run the full analysis pipeline on an image.
-
-        This includes:
-        1. Leaf detection (YOLOv11)
-        2. Disease classification (EfficientNetV2)
-        3. Recommendation generation (LLM)
-
-        Args:
-            analysis_id: The analysis UUID
-
-        Returns:
-            AnalysisResponse: Updated analysis with results
-
-        TODO: Implement full analysis pipeline.
-        """
-        raise NotImplementedError("Analysis pipeline not implemented")
-
-    async def delete_analysis(self, user: User, analysis_id: UUID) -> bool:
-        """
-        Delete an analysis.
-
-        Args:
-            user: The authenticated user
-            analysis_id: The analysis UUID
-
-        Returns:
-            bool: True if deleted, False if not found
-
-        TODO: Implement analysis deletion.
-        """
-        raise NotImplementedError("Delete analysis not implemented")
+        try:
+            response = analysis_crud.delete(db, str(analysis_id))
+            return response
+        except:
+            return False
 
 
-# Singleton instance
 analysis_service = AnalysisService()
 

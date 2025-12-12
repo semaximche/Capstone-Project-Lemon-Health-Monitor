@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="minimalist_inference" type="PythonConfigurationType" factoryName="Python" editBeforeRun="true" nameIsGenerated="true">
+  <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" editBeforeRun="true" nameIsGenerated="true">
     <module name="Model Training" />
     <option name="ENV_FILES" value="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\Model Training\.venv" />
     <option name="INTERPRETER_OPTIONS" value="" />
@@ -12,7 +12,7 @@
     <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inference/minimalist_inference.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inference/main.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />

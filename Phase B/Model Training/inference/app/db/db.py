@@ -1,18 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from app.settings import settings
-
-
-
-
+from inference.app.settings import Settings
 
 engine = create_engine(
-    settings.database_url,
-    connect_args={"check_same_thread": False},
+    Settings.database_url,
+    connect_args={"check_same_thread": False},  # required for SQLite
 )
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
 
 def get_db():

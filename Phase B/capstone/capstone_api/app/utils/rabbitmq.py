@@ -12,6 +12,7 @@ class RabbitMQPublisher:
         self.host = host
         self.queue_name = queue_name
 
+
     def publish_job(self,job):
         connection = pika.BlockingConnection(
             pika.ConnectionParameters(self.host)
