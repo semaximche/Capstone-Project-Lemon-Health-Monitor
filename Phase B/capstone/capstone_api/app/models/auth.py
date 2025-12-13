@@ -34,7 +34,7 @@ class LogoutResponse(BaseModel):
     message: str = Field(default="Successfully logged out")
 
 class LoginRequest(BaseModel):
-    user_name: str
+    username: str
     password: str
 
 

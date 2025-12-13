@@ -39,6 +39,7 @@ class AnalysisService:
 
         return AnalysisResponse(status="analysis sent to queue")
 
+
     async def get_analysis(
         self,
         # user: User,

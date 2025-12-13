@@ -9,7 +9,7 @@ from inference.app.crud.analysis import analysis_crud
 from inference.app.storage.storage_service import storage_service
 
 
-def process_image(image_bytes: bytes):
+def process_image(image_bytes: bytes,user_id:str):
     """Save image temporarily and run analyzer."""
     with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
         tmp.write(image_bytes)
@@ -19,8 +19,7 @@ def process_image(image_bytes: bytes):
     results = health_analyzer.analyze(tmp_path)
     object_id = uuid.uuid4()
 
-    #need to provide user_id in the future instead of 1234
-    presigned_url =  storage_service.upload_file(f"users\\1234\\analysis\\{object_id}",tmp_path)
+    presigned_url =  storage_service.upload_file(object_name=f"users\\{user_id}\\analysis\\{object_id}",source_path=tmp_path,extension=".jpg")
     #modify results to our needs and get real URL
 
     print("pre signed url")
@@ -50,11 +49,12 @@ def callback(ch, method, properties, body: bytes):
     print("Received task from RabbitMQ")
     data = json.loads(body)
     img_b64 = data["image"]
+    user_id = data["user_id"]
 
     image_bytes = base64.b64decode(img_b64)
 
     # Run the detection
-    process_image(image_bytes)
+    process_image(image_bytes,user_id)
 
     print("Analysis complete:")
     ch.basic_ack(delivery_tag=method.delivery_tag)

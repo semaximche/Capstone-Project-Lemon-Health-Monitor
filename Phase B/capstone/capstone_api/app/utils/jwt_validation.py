@@ -8,7 +8,7 @@ from app.db.db import get_db
 from app.services.user_service import user_service
 from app.db.models import User
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/routes/v1/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/v1/auth/login")
 
 
 def get_current_user(
@@ -16,12 +16,12 @@ def get_current_user(
     db: Session = Depends(get_db)
 ) -> User:
     """
-    Validate JWT token and return the current user from the database.
+    Validate JWT token and return the current user bby id from the database.
     """
     try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        username: str | None = payload.get("sub")
-        if username is None:
+        payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
+        user_id: str | None = payload.get("sub")
+        if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid token",
@@ -34,7 +34,7 @@ def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    user: User | None = user_service.get_user_by_username(db, username)
+    user: User | None = user_service.get_user_by_id(db, user_id)
     if user is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 

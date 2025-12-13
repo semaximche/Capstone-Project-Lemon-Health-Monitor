@@ -6,14 +6,6 @@ class Settings:
     queue_host: str = "localhost" #for regular run
     # queue_host: str = "rabbitmq" #for docker
 
-
-
-    # Object Storage settings (for image storage)
-    # storage_host: str = Field(
-    #     # default="localhost:9000",
-    #     default="C:\projects\data",
-    #     description="Storage type: local, s3, minio, or firebase",
-    # )
     storage_host: str = "C:\projects\data"
     storage_bucket: str = Field(default="analysis", description="Storage bucket name")
     storage_endpoint: str | None = Field(default="users", description="Storage endpoint URL (for S3/Minio)")

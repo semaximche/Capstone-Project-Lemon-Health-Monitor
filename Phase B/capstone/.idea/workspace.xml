@@ -5,50 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1429e686-25ab-47ba-a715-d87c92550327" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/analysis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/crud/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/crud/analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/llm_model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/models/analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/models/queue.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/minio_storage_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/minio_storage_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/db/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Model Training/inference/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/runConfigurations/minimalist_inference.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/.idea/runConfigurations/main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Model Training/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/efficientnet50epochs.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/inference_matplotlib.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/minimalist_inference.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/services/health_analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/services/rabbitmq_worker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/anthracnose.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/bad_soil1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/bad_soil2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/citrus_canker.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/curl_virus.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/dehydration.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/demo_image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/iron_defficiency.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/magnesium_defficiency.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/nitrogen_defficiency.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/sooty_mould.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/spider_mites1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/spider_mites2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/test1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/test2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/test3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/test4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/test5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/test_images/zinc_defficiency.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/yolo100epochs.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/services/analysis_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/services/analysis_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

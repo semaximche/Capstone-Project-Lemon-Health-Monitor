@@ -22,14 +22,27 @@ class FileSystemStorageService:
     def ensure_dir(self, path: Path):
         path.parent.mkdir(parents=True, exist_ok=True)
 
-    def upload_file(self, object_name: str, file_path: str) -> Path:
+    def upload_file(
+            self,
+            object_name: str,
+            source_path: str | Path,
+            extension: str | None = None,
+    ) -> Path:
         """
-        Copy file from local filesystem into storage.
+        Save a file into local storage and return its final path.
         """
-        dest = self.full_path(object_name)
-        self.ensure_dir(dest)
 
-        shutil.copy(file_path, dest)
+        source_path = Path(source_path)
+
+        # Ensure extension
+        if extension and not object_name.endswith(extension):
+            object_name = f"{object_name}{extension}"
+
+        dest = self.full_path(object_name)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+
+        shutil.copy2(source_path, dest)
+
         return dest
 
 

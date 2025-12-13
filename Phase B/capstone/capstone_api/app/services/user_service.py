@@ -17,24 +17,24 @@ class UserService:
 
     def get_user_by_username(self,db: Session,user_name:str) -> UserResponse | None:
             current_user = user_crud.get_user_by_username(db,user_name)
-            user_response = UserResponse(id=current_user.id, user_name=current_user.user_name,password=current_user.password)
-            return user_response
+            if current_user:
+                user_response = UserResponse(id=current_user.id, user_name=current_user.user_name,
+                                             password=current_user.password)
+                return user_response
+            return None
 
-    # async def get_user_by_id(self,db: Session, user_id: str) -> UserResponse | None:
-    #     """
-    #     Get a user by their ID.
-    #
-    #     Args:
-    #         user_id: The user's UUID
-    #
-    #     Returns:
-    #         UserResponse | None: User data or None if not found
-    #
-    #     TODO: Implement database lookup.
-    #     """
-    #     raise NotImplementedError("Get user by ID not implemented")
-    #
-    #
+    def get_user_by_id(self,db: Session, user_id: str) -> UserResponse | None:
+        """
+        Get a user by their ID.
+        """
+        current_user = user_crud.get_user_by_id(db, user_id)
+        if current_user:
+            user_response = UserResponse(id=current_user.id, user_name=current_user.user_name,
+                                         password=current_user.password)
+            return user_response
+        return None
+
+
     # async def get_user_by_email(self, email: str) -> UserResponse | None:
     #     """
     #     Get a user by their email address.

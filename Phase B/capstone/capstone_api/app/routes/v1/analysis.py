@@ -25,8 +25,6 @@ async def create_analysis(
         current_user: User = Depends(get_current_user),
 ) -> AnalysisResponse:
     """Create a new image analysis."""
-    print("current user is:")
-    print(current_user)
     return await analysis_service.create_analysis(current_user,image)
 
 
