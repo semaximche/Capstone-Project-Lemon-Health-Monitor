@@ -18,11 +18,17 @@ def init_db():
     # Use session to add users
     with Session(engine) as session:
         for u in initial_users:
-            user = User(user_name=u["user_name"], password=u["password"])
-            session.add(user)
+            # Check if user already exists
+            existing_user = session.query(User).filter(User.user_name == u["user_name"]).first()
+            if not existing_user:
+                user = User(user_name=u["user_name"], password=u["password"])
+                session.add(user)
+                print(f"Added user: {u['user_name']}")
+            else:
+                print(f"User {u['user_name']} already exists, skipping.")
         session.commit()
 
-    print("Initial users added!")
+    print("Database initialization complete!")
 
 
 if __name__ == "__main__":

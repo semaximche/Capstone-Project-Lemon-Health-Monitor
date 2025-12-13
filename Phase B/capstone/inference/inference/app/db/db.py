@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from inference.app.settings import Settings
+from inference.app.settings import settings
 
 engine = create_engine(
-    Settings.database_url,
+    settings.database_url,
     connect_args={"check_same_thread": False},  # required for SQLite
 )
 

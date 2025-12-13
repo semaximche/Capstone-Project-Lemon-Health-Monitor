@@ -3,9 +3,13 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/capstone_api" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <sourceFolder url="file://$MODULE_DIR$/inference" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.13 (.venv)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
   </component>
 </module>

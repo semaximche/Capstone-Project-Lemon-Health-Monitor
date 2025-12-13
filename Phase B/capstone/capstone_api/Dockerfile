@@ -1,18 +1,22 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install uv
+RUN pip install uv
 
 # Copy project files
-COPY . .
+COPY capstone_api/pyproject.toml ./
+COPY capstone_api/app ./app
+COPY capstone_api/requirements.txt* ./
 
-# Create a folder for the SQLite DB
-RUN mkdir -p /app/data
+# Install dependencies using uv
+RUN uv sync
+
+# data_storage will be mounted at runtime, no need to copy
 
 ENV PYTHONPATH=/app
+ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 8000
 

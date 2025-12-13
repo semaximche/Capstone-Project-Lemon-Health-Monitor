@@ -4,24 +4,133 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1429e686-25ab-47ba-a715-d87c92550327" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/services/analysis_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/services/analysis_worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" afterDir="false" />
+    <list default="true" id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/Model Training.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/runConfigurations/main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/.python-version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/analysis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/analysis/health_analyzer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/crud/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/crud/analysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/db/db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/db/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/efficientnet50epochs.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/inference_matplotlib.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/llm_model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/models/analysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/models/queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/services/analysis_worker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/minio_storage_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/minio_storage_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/storage/storage_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/anthracnose.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/bad_soil1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/bad_soil2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/citrus_canker.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/curl_virus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/dehydration.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/demo_image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/iron_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/magnesium_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/nitrogen_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/sooty_mould.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/spider_mites1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/spider_mites2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/test2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/test3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/test_images/zinc_defficiency.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/app/yolo100epochs.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/db/db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/inference/db/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/mydb.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/pyproject.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Model Training/uv.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/capstone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/capstone.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.python-version" beforeDir="false" afterPath="$PROJECT_DIR$/.python-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/context/log_context.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/context/log_context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/dependencies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/o11y/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/o11y/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/o11y/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/o11y/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/crud/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/crud/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/crud/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/crud/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/init_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/init_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/middlewares/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/middlewares/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/middlewares/logging_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/middlewares/logging_middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/health.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/health.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/monitoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/monitoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/plant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/health_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/health_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/v1_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/v1_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/analysis_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/analysis_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/auth_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/camera_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/camera_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/monitoring_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/monitoring_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/plant_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/plant_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/storage/minio_storage_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/storage/minio_storage_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/storage/storage_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/storage/storage_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/utils/jwt_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/utils/jwt_validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/utils/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/utils/rabbitmq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dockerfile" />
-        <option value="Python Script" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -39,114 +148,28 @@
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="36DErEF5qlRswcpv2KCOpjOhxrq" />
+  <component name="ProjectId" id="36nuWKEQY8DvNoFbAWtcdiTTpCk" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.init_db (1).executor": "Run",
-    "Python.init_db.executor": "Run",
-    "Python.main (1).executor": "Run",
-    "Python.main (2).executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.rabbitmq.executor": "Run",
-    "Python.security.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "david",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/college/final_project/capstone/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone/capstone_api/app/storage",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;david&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\storage" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/capstone_api/castpone_api/core/context" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app" />
-      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api" />
-      <recent name="C:\college\final_project\capstone\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone" />
-      <recent name="$PROJECT_DIR$/capstone_api/castpone_api/core/o11y" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.main (2)">
-    <configuration name="init_db (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app/db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/app/db/init_db.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="init_db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/capstone_api/db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/capstone_api/db/init_db.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/capstone_api" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/capstone_api/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,35 +191,9 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="security" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/app/core/security.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (2)" />
-        <item itemvalue="Python.security" />
-        <item itemvalue="Python.init_db (1)" />
-        <item itemvalue="Python.init_db" />
-        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -209,11 +206,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1429e686-25ab-47ba-a715-d87c92550327" name="Changes" comment="" />
-      <created>1764532938302</created>
+      <changelist id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="" />
+      <created>1765654687021</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1764532938302</updated>
+      <updated>1765654687021</updated>
     </task>
     <servers />
   </component>

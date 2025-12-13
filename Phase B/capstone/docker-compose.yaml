@@ -1,0 +1,97 @@
+services:
+  # RabbitMQ message broker for communication between API and worker
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: lemon-rabbitmq
+    ports:
+      - "5672:5672"   # RabbitMQ main port
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lemon-network
+
+  # Main API service
+  capstone_api:
+    build:
+      context: .
+      dockerfile: ./capstone_api/Dockerfile
+    container_name: lemon-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Database settings
+      DATABASE_URL: sqlite:////app/data_storage/mydb.sqlite3
+
+      # Storage settings
+      STORAGE_HOST: /app/data_storage/storage
+      STORAGE_BUCKET: analysis
+      STORAGE_ENDPOINT: users
+      STORAGE_ACCESS_KEY: admin
+      STORAGE_SECRET_KEY: admin12345
+
+      # RabbitMQ settings
+      QUEUE_HOST: rabbitmq
+      QUEUE_NAME: disease_jobs
+      QUEUE_USER: admin
+      QUEUE_PASSWORD: admin123
+
+      # JWT settings
+      JWT_SECRET_KEY: f4d34c2b0af0c67da891b63be1d2ccfb3a1ec9d5afbb08be71a47b31f28d9c62
+      JWT_ALGORITHM: HS256
+      JWT_ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      JWT_REFRESH_TOKEN_EXPIRE_DAYS: 7
+
+      # App settings
+      DEBUG: "false"
+    volumes:
+      - ./data_storage:/app/data_storage
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - lemon-network
+    restart: unless-stopped
+
+  # Inference worker service
+  inference:
+    build:
+      context: .
+      dockerfile: ./inference/Dockerfile
+    container_name: lemon-inference
+    environment:
+      # Database settings
+      DATABASE_URL: sqlite:////app/data_storage/mydb.sqlite3
+
+      # Storage settings
+      STORAGE_HOST: /app/data_storage/storage
+      STORAGE_BUCKET: analysis
+      STORAGE_ENDPOINT: users
+      STORAGE_ACCESS_KEY: admin
+      STORAGE_SECRET_KEY: admin12345
+
+      # RabbitMQ settings
+      QUEUE_HOST: rabbitmq
+      QUEUE_NAME: disease_jobs
+      QUEUE_USER: admin
+      QUEUE_PASSWORD: admin123
+    volumes:
+      - ./data_storage:/app/data_storage
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      capstone_api:
+        condition: service_started
+    networks:
+      - lemon-network
+    restart: unless-stopped
+
+networks:
+  lemon-network:
+    driver: bridge

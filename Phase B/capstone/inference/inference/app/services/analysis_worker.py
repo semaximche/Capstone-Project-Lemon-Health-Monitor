@@ -7,6 +7,7 @@ from inference.app.analysis.health_analyzer import health_analyzer
 from inference.app.db.db import get_db
 from inference.app.crud.analysis import analysis_crud
 from inference.app.storage.storage_service import storage_service
+from inference.app.settings import settings
 
 
 def process_image(image_bytes: bytes,user_id:str):
@@ -66,23 +67,24 @@ def start_worker():
     """
     try:
         # Establish a blocking connection to the RabbitMQ broker
+        credentials = pika.PlainCredentials(settings.queue_user, settings.queue_password)
         connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host="localhost")
+            pika.ConnectionParameters(host=settings.queue_host, credentials=credentials)
         )
         channel = connection.channel()
 
-        channel.queue_declare(queue="disease_jobs")
+        channel.queue_declare(queue=settings.queue_name)
 
         print("Worker is waiting for tasks. To exit press CTRL+C")
         channel.basic_qos(prefetch_count=1)
 
-        channel.basic_consume(queue="disease_jobs", on_message_callback=callback)
+        channel.basic_consume(queue=settings.queue_name, on_message_callback=callback)
 
         # Start the main message loop
         channel.start_consuming()
 
     except pika.exceptions.AMQPConnectionError:
-        print("\n[!!!] Failed to connect to RabbitMQ. Please ensure the server is running on localhost.")
+        print(f"\n[!!!] Failed to connect to RabbitMQ at {settings.queue_host}. Please ensure the server is running.")
     except KeyboardInterrupt:
         print("\nWorker stopped by user.")
         if 'connection' in locals() and connection.is_open:

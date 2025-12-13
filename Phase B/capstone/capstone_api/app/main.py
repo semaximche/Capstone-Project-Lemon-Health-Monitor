@@ -1,14 +1,13 @@
 """Main FastAPI application entry point."""
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from app.core.o11y.logger import init_logger
 from app.middlewares.logging_middleware import LoggingMiddleware
 from app.models.common import Message
 from app.routes.health_router import router as health_router
 from app.routes.v1.v1_router import router as v1_router
 
 # Initialize logger
-init_logger(service_name="Lemon Health")
+# init_logger(service_name="Lemon Health")
 
 # Create FastAPI application
 app = FastAPI(

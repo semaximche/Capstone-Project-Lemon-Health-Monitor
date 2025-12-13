@@ -14,8 +14,9 @@ class RabbitMQPublisher:
 
 
     def publish_job(self,job):
+        credentials = pika.PlainCredentials(settings.queue_user, settings.queue_password)
         connection = pika.BlockingConnection(
-            pika.ConnectionParameters(self.host)
+            pika.ConnectionParameters(self.host, credentials=credentials)
         )
 
         channel = connection.channel()

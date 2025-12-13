@@ -26,15 +26,13 @@ class Settings(BaseSettings):
 
     # Database settings
     database_url: str = Field(
-        # default="postgresql://postgres:postgres@localhost:5432/capstone",
-        default="sqlite:///C:/projects/mydb.sqlite3",
-        # default="sqlite:///./data/mydb.sqlite3",
+        default="sqlite:///./data_storage/mydb.sqlite3",
         description="Database connection URL",
     )
 
     # Object Storage settings (for image storage)
     storage_host: str = Field(
-        default="C:\\projects\\data",
+        default="./data_storage/storage",
         description="Storage type: local, s3, minio, or firebase",
     )
     storage_bucket: str = Field(default="analysis", description="Storage bucket name")
@@ -106,6 +104,8 @@ class Settings(BaseSettings):
     # Rabbitmq settings
     queue_host: str = Field(default="localhost", description="Rabbitmq server host")
     queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
+    queue_user: str = Field(default="guest", description="RabbitMQ username")
+    queue_password: str = Field(default="guest", description="RabbitMQ password")
 
 @lru_cache
 def get_settings() -> Settings:
