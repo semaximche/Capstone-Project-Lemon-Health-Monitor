@@ -1,9 +1,8 @@
 """SQLModel base configuration."""
-from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from uuid import UUID, uuid4
 from sqlmodel import Field, SQLModel
-from app.db.db import Base
+from app.db import Base
 
 class BaseModel(SQLModel):
     """Base model with UUID primary key."""

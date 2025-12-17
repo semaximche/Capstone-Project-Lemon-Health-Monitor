@@ -2,8 +2,7 @@
 from sqlalchemy.orm import Session
 from app.db.db import Base, engine
 from app.db.models import User
-from werkzeug.security import generate_password_hash
-import uuid
+
 
 def init_db():
 
