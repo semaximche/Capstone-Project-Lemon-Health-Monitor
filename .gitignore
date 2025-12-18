@@ -2,8 +2,8 @@
 # Capstone gitignore
 # -------------------
 
-Phase B/Backup
-Phase B/Model Training/runs
+Phase B/model-training/runs
+*.pt
 
 # ----------------
 # Python gitignore

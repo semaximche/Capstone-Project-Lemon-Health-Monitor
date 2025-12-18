@@ -1,0 +1,21 @@
+[project]
+name = "model-training"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "torch>=2.9.1",
+    "torchvision>=0.24.1",
+    "tqdm>=4.66.5",
+    "ultralytics>=8.3.240",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu130"
