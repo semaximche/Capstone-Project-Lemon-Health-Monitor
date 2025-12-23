@@ -20,6 +20,9 @@ export async function handleLogin(username :string, password: string) {
 
             const data = await response.json();
             console.log('success: ', data);
+            if(data.access_token) {
+                return data.access_token;
+            }
 
         } catch (error: any) {
             console.error('error:', error.message);

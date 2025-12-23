@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { handleLogin } from "~/lib/user-auth";
+import { useAuth } from "~/provider/auth-context";
 
 export default function Signin() {
+    const { login } = useAuth();
 
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -9,7 +11,8 @@ export default function Signin() {
     const handleClick = () => {
         if(usernameRef.current && passwordRef.current) {
             console.log('logging in with ', usernameRef.current.value, passwordRef.current.value);
-            handleLogin(usernameRef.current.value, passwordRef.current.value);
+            const data = handleLogin(usernameRef.current.value, passwordRef.current.value);
+            login(data)
         }
     }
 
