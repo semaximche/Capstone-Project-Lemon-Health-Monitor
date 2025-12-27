@@ -7,7 +7,11 @@ interface AuthContextType {
     logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({
+    token: null,
+    login: (newToken: string) => {},
+    logout: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     let navigate = useNavigate();

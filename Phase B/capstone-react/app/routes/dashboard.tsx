@@ -4,13 +4,15 @@ import { useAuth } from "~/provider/auth-context";
 export default function Dashboard() {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [atoken, setAtoken] = useState<string>('');
+    const [error, setError] = useState<String | null>(null);
+    const [atoken, setAtoken] = useState<String>('');
 
     const { token } = useAuth();
 
     useEffect((() => {
-        setAtoken(token.value);
+      if(token) {
+        setAtoken(token);
+      }
     }), [token, atoken])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +34,7 @@ export default function Dashboard() {
         try {
             setLoading(true);
             setError(null);
-            console.log(atoken.value);
+            console.log(atoken);
             const response = await fetch("http://127.0.0.1:8000/v1/analysis", {
                 method: "POST",
                 headers: {
