@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import AnalysisDisplay from "~/components/analysisDisplay";
+import { fakeResultsData } from "~/fakeData/fakeAnalysisData";
 import { useAuth } from "~/provider/auth-context";
 
 export default function Dashboard() {
@@ -89,10 +91,10 @@ export default function Dashboard() {
         <div className="flex aspect-square items-center justify-center rounded-xl bg-black shadow border-2 border-white text-white ">
           <div className="w-full p-6">
             <h2 className="mb-4 text-xl font-semibold">Results</h2>
+              <AnalysisDisplay data={fakeResultsData} />
+            {/* {!loading && (<p className="text-gray-500">No results yet.</p>)}
 
-            {!loading && (<p className="text-gray-500">No results yet.</p>)}
-
-            {loading && (<p className="text-gray-500">Processing image…</p>)}
+            {loading && (<p className="text-gray-500">Processing image…</p>)} */}
           </div>
         </div>
 
