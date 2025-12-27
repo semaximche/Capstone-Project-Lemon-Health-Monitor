@@ -1,23 +1,12 @@
-// Server analysis request schema
-interface AnalysisRequest {
-  image: File;
+// UI display data
+interface ResultsDisplay {
+  image: string;
+  classifications: Array<AnalysisBox>;
 }
 
-// Server analysis response schema code 201
-interface AnalysisResponseSuccess {
-  analysisID: String;
-  status: String;
-  description: String;
-}
-
-// Server get analysis request schema
-interface GetAnalysisRequest {
-  analysisID: String;
-}
-
-// Server get analysis response schema code 200
-interface GetAnalysisResponseSucess {
-  analysisID: String;
-  status: String;
-  description: String;
+interface AnalysisBox {
+  box: number[];          // 4 coordinate points in pixels
+  yolo_conf: number;      // yolo confidence for leaf detection
+  disease_class: string;  // efficientnet disease classification string
+  disease_conf: number;   // efficientnet disease confidence
 }
