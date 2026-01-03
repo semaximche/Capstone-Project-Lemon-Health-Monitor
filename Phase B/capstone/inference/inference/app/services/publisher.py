@@ -1,6 +1,6 @@
 import pika
 import json
-from app.settings import settings
+from inference.app.settings import settings
 
 
 class RabbitMQPublisher:

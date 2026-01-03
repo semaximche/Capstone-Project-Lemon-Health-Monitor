@@ -1,6 +1,6 @@
 """Authentication-related Pydantic models."""
 from sqlalchemy.orm import Mapped, mapped_column
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 
 class UserCreate(BaseModel):
     username: str
@@ -46,3 +46,7 @@ class CurrentUserResponse(BaseModel):
     name: str = Field(description="User display name")
     picture: str | None = Field(default=None, description="User profile picture URL")
 
+class SignupRequest(BaseModel):
+    username: str
+    password: str
+    email: EmailStr

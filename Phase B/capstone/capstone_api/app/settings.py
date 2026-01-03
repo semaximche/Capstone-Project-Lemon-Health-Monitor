@@ -26,7 +26,7 @@ class Settings(BaseSettings):
 
     # Database settings
     database_url: str = Field(
-        default="sqlite:///./data_storage/mydb.sqlite3",
+        default="sqlite:///../data_storage/mydb.sqlite3",
         description="Database connection URL",
     )
 
@@ -103,7 +103,9 @@ class Settings(BaseSettings):
 
     # Rabbitmq settings
     queue_host: str = Field(default="localhost", description="Rabbitmq server host")
-    queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
+    analysis_queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
+    notifications_queue_name: str = Field(default="notifications", description="notifications Rabbitmq queue name")
+    events_exchange: str = Field(default="events_exchange", description="notifications Rabbitmq queue name")
     queue_user: str = Field(default="guest", description="RabbitMQ username")
     queue_password: str = Field(default="guest", description="RabbitMQ password")
 

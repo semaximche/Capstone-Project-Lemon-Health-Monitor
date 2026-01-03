@@ -1,9 +1,5 @@
-import { Header } from "~/components/header";
 import type { Route } from "./+types/home";
-import { Sidebar } from "~/components/sidebar";
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import { NavigationList } from "~/components/navigation-list";
+import Welcome from "~/components/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,21 +9,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
-
   return (
-    <div>
-      <Sidebar open={sidebarOpen} onToggleSidebar={() => {setSidebarOpen(false)}} />
-      <Header onToggleSidebar={() => {setSidebarOpen(true)}} />
-      <main className="flex text-center justify-center m-5">
-        <div className="border p-4 rounded-md">
-          <h1 className="font-bold text-xl p-2">
-            Lemon Disease Detection
-          </h1>
-          <NavigationList/>
-        </div>
-      </main>
-    </div>
+    <main className="flex text-center justify-center m-5">
+      <div className="w-full max-w-4xl">
+        <Welcome />
+      </div>
+    </main>
   );
 }

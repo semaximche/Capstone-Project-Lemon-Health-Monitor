@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.db.models import User
-from app.core.security import hash_password
+# from app.core.security import hash_password
 
 class UserCRUD:
 
@@ -9,8 +9,8 @@ class UserCRUD:
 
     # Create a new user
     def create_user(self, db: Session, username: str, email: str, password: str) -> User:
-        hashed_pw = hash_password(password)
-        user = User(username=username, email=email, hashed_password=hashed_pw)
+        # hashed_pw = hash_password(password)
+        user = User(user_name=username, password=password,email=email)
         db.add(user)
         db.commit()
         db.refresh(user)
@@ -23,6 +23,9 @@ class UserCRUD:
     # Get user by id
     def get_user_by_id(self, db: Session, user_id: int) -> User | None:
         return db.query(User).filter(User.id == user_id).first()
+
+    def get_user_by_email(self, db: Session, email: str) -> User | None:
+        return db.query(User).filter(User.email == email).first()
 
     # Update user
     def update_user(self, db: Session, user: User, **kwargs) -> User:

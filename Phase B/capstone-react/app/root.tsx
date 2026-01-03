@@ -3,6 +3,9 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, 
 import type { Route } from "./+types/root";
 import "./app.css";
 import { AuthProvider } from "./provider/auth-context";
+import { useState } from "react";
+import { Header } from "~/components/header";
+import { Sidebar } from "~/components/sidebar";
 
 // link and preload google fonts
 export const links: Route.LinksFunction = () => [
@@ -13,6 +16,8 @@ export const links: Route.LinksFunction = () => [
 
 // root layout
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <html lang="en">
       <head>
@@ -22,7 +27,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-white dark:bg-gray-950 text-black dark:text-white">
         <AuthProvider>
-          {children}
+          <Sidebar open={sidebarOpen} onToggleSidebar={() => setSidebarOpen(false)} />
+          <Header onToggleSidebar={() => setSidebarOpen(true)} />
+          <main className="pt-16">
+            {children}
+          </main>
         </AuthProvider>
         <ScrollRestoration />
         <Scripts />

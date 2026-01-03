@@ -11,8 +11,13 @@ export function NavigationList() {
         </button>
       </li>
       <li className="rounded px-3 py-1 hover:bg-gray-500">
-        <button onClick={() => {navigate("/dashboard")}}>
-          Dashboard
+        <button onClick={() => {navigate("/register")}}>
+          Register
+        </button>
+      </li>
+      <li className="rounded px-3 py-1 hover:bg-gray-500">
+        <button onClick={() => {navigate("/analysis")}}>
+          Analysis
       </button>
     </li>
     <li className="rounded px-3 py-1 hover:bg-gray-500">

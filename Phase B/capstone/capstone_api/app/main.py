@@ -5,7 +5,7 @@ from app.middlewares.logging_middleware import LoggingMiddleware
 from app.models.common import Message
 from app.routes.health_router import router as health_router
 from app.routes.v1.v1_router import router as v1_router
-
+from app.services.notifications.notification_startup import lifespan
 # Initialize logger
 # init_logger(service_name="Lemon Health")
 
@@ -14,7 +14,15 @@ app = FastAPI(
     title="Capstone API",
     description="Lemon Tree Disease Identification API - A plant disease identification system using computer vision and LLM",
     version="0.1.0",
+    lifespan=lifespan,
 )
+
+origins = [
+    "http://localhost:5173", # Example frontend origin
+    "wss://localhost:5173",
+    "ws://localhost:5173",
+
+]
 
 # Add middlewares
 app.add_middleware(LoggingMiddleware)

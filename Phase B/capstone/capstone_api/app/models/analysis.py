@@ -7,9 +7,9 @@ from app.models.queue import QueueMessage
 
 class AnalysisResponse(BaseModel):
     """Response model for an image analysis."""
-    analysis_id: str = ""
-    status : str
+    id: str = ""
     description : str =""
+    summary : str =""
 
 class AnalysisCreate(QueueMessage):
     """Request model for creating a new analysis."""

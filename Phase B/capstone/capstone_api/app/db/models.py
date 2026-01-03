@@ -1,8 +1,9 @@
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import String,TEXT
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.sql.schema import ForeignKey
+
 from app.db.db import Base
 import uuid
-
 
 
 class User(Base):
@@ -10,18 +11,20 @@ class User(Base):
     # UUID primary key stored as string
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     user_name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
-    password: Mapped[str] = mapped_column(String(100), nullable=False)
+    password: Mapped[str] = mapped_column(String(500), nullable=False)
+    email: Mapped[str] = mapped_column(String(100), nullable=False)
 
 
 class Analysis(Base):
     __tablename__ = "analysis"
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
-    # user_id: Mapped[str] = mapped_column(String(36), ForeignKey("users.id"), nullable=False)
+    user_id: Mapped[str] = mapped_column(String(36), ForeignKey("users.id"), nullable=False)
     presigned_url: Mapped[str] = mapped_column(String(255), nullable=True)
     description: Mapped[str] = mapped_column(String(500), nullable=True)
-    # user = relationship("User", back_populates="analyses")
+    summary: Mapped[str] = mapped_column(TEXT, nullable=True)
+    user = relationship("User", back_populates="analyses")
 
 
 # Add back-populates in User
-# User.analyses = relationship("Analysis", back_populates="user", cascade="all, delete-orphan")
+User.analyses = relationship("Analysis", back_populates="user", cascade="all, delete-orphan")

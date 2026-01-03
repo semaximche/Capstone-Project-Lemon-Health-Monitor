@@ -1,5 +1,9 @@
 from sqlalchemy.orm import Session
 from app.db.models import Analysis
+from typing import List, Any
+from app.models.analysis import (
+    AnalysisResponse,
+)
 
 
 class AnalysisCRUD:
@@ -26,6 +30,19 @@ class AnalysisCRUD:
         db.commit()
         return True
 
+    def get_by_user_id(
+            self,
+            db: Session,
+            user_id: str,
+    ) -> list[type[Analysis]]:
+        """
+        Get all analyses belonging to a specific user.
+        """
+        return (
+            db.query(Analysis)
+            .filter(Analysis.user_id == user_id)
+            .all()
+        )
 
 
 analysis_crud = AnalysisCRUD()

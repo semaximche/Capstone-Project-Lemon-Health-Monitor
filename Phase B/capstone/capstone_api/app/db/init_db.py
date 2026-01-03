@@ -10,8 +10,8 @@ def init_db():
     print("Tables created successfully!")
 
     initial_users = [
-        {"user_name": "david", "password": "david"},
-        {"user_name": "maxim", "password": "maxim"},
+        {"user_name": "david", "password": "david","email":" david@gmail.com"},
+        {"user_name": "maxim", "password": "maxim","email":" maxim@gmail.com"},
     ]
 
     # Use session to add users
@@ -20,7 +20,7 @@ def init_db():
             # Check if user already exists
             existing_user = session.query(User).filter(User.user_name == u["user_name"]).first()
             if not existing_user:
-                user = User(user_name=u["user_name"], password=u["password"])
+                user = User(user_name=u["user_name"], password=u["password"],email=u["email"])
                 session.add(user)
                 print(f"Added user: {u['user_name']}")
             else:
