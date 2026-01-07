@@ -32,7 +32,7 @@ async def get_current_user_analyses(
 
 @router.get(
     "/{analysis_id}",
-    response_model=List[AnalysisResponse],
+    response_model=AnalysisResponse,
     summary="Get specific analyses for a specific user",
     description="Get specific analysis created by the currently logged-in user.",
 )

@@ -5,48 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/users/user_analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/web_socket.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/services/notifications/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/services/notifications/notification_consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/services/notifications/notification_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/services/notifications/notification_startup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/services/notifications/web_socket_notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inference/inference/app/llm_model/gemini_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inference/inference/app/services/publisher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/components/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/components/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/components/navigation-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/components/navigation-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/lib/user-auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/lib/user-auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/root.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/core/security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/crud/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/crud/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/crud/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/crud/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/init_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/init_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/middlewares/logging_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/middlewares/logging_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/models/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/models/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/routes/v1/v1_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/routes/v1/v1_router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/analysis_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/analysis_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/auth_service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/services/user_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone_api/app/utils/rabbitmq.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/utils/rabbitmq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_storage/mydb.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/inference/app/crud/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/inference/app/crud/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/inference/app/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/inference/app/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/inference/app/services/analysis_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/inference/app/services/analysis_worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/inference/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/inference/app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference/inference/app/storage/storage_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference/inference/app/storage/storage_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +27,7 @@
         <entry key="$PROJECT_DIR$/../.." value="david-frontend" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -99,7 +60,7 @@
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "david-frontend",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"

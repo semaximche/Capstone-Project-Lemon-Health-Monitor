@@ -160,28 +160,28 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             return;
         }
 
-        // fetch analysis details from API
-        try {
-            const resp = await fetch(`http://127.0.0.1:8000/v1/analysis/${aid}`, {
-                headers: token ? { Authorization: `Bearer ${token}` } : {},
-            });
-                if (resp.ok) {
-                const data = await resp.json();
-                const ad: AnalysisData = {
-                    id: aid,
-                    user_id: data.user_id || n.user_id,
-                    presigned_url: data.presigned_url || data.image || data.url,
-                    description: data.description || data.results || '',
-                    summary: data.summary || data.summary_text || '',
-                };
-                setAnalyses(prev => ({ ...prev, [aid]: ad }));
-                setSelectedAnalysis(ad);
-            } else {
-                console.warn('failed to fetch analysis', resp.status);
-            }
-        } catch (e) {
-            console.error('error fetching analysis', e);
-        }
+        // // fetch analysis details from API
+        // try {
+        //     const resp = await fetch(`http://127.0.0.1:8000/v1/analysis/${aid}`, {
+        //         headers: token ? { Authorization: `Bearer ${token}` } : {},
+        //     });
+        //         if (resp.ok) {
+        //         const data = await resp.json();
+        //         const ad: AnalysisData = {
+        //             id: aid,
+        //             user_id: data.user_id || n.user_id,
+        //             presigned_url: data.presigned_url || data.image || data.url,
+        //             description: data.description || data.results || '',
+        //             summary: data.summary || data.summary_text || '',
+        //         };
+        //         setAnalyses(prev => ({ ...prev, [aid]: ad }));
+        //         setSelectedAnalysis(ad);
+        //     } else {
+        //         console.warn('failed to fetch analysis', resp.status);
+        //     }
+        // } catch (e) {
+        //     console.error('error fetching analysis', e);
+        // }
 
         navigate('/dashboard');
     };

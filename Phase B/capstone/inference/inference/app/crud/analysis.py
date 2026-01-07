@@ -15,10 +15,10 @@ class AnalysisCRUD:
 
         )
         db.add(obj)
-        db.flush()
+        db.commit()
+        db.refresh(obj)
 
         return obj.id
-
 
     def get(self, db: Session, analysis_id: str) -> Analysis | None:
         return db.query(Analysis).filter(Analysis.id == analysis_id).first()
