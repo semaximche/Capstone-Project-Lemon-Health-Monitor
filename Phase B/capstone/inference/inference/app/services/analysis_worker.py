@@ -20,8 +20,8 @@ def process_image(image_bytes: bytes, user_id: str):
 
     # Analyze using AI model
     results = health_analyzer.analyze(tmp_path)
-    # llm_summary = llm_generator.generate_report(results)
-    llm_summary = "summary"
+    llm_summary = llm_generator.generate_report(results)
+    # llm_summary = "summary"
 
     print("LLM summary:", llm_summary)
 

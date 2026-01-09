@@ -9,10 +9,11 @@ export default function Analysis() {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [waitingForNotification, setWaitingForNotification] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [atoken, setAtoken] = useState<string>("");
 
-  const { token } = useAuth();
+  const { token, notifications } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +33,18 @@ export default function Analysis() {
     setPreview(url);
     return () => URL.revokeObjectURL(url);
   }, [file]);
+
+  // Clear waiting state when a new notification arrives (analysis completed)
+  useEffect(() => {
+    if (waitingForNotification && notifications.length > 0) {
+      // Check if the most recent notification is unread (likely the one we're waiting for)
+      const latestNotification = notifications[0];
+      if (!latestNotification.read) {
+        // Analysis completed, clear waiting state
+        setWaitingForNotification(false);
+      }
+    }
+  }, [notifications, waitingForNotification]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -82,8 +95,12 @@ export default function Analysis() {
       const data = await response.json();
       // TODO: replace fakeResultsData with `data` when backend returns structured results
       console.log("analysis result", data);
+      
+      // After successful upload, show waiting state until notification arrives
+      setWaitingForNotification(true);
     } catch (err: any) {
       setError(err instanceof Error ? err.message : String(err));
+      setWaitingForNotification(false);
       if (err instanceof Error && err.message.toLowerCase().includes("session expired")) {
         setTimeout(() => {
           navigate("/signin");
@@ -138,7 +155,12 @@ export default function Analysis() {
                 {loading ? "Analyzing..." : "Upload & Analyze"}
               </button>
               <button
-                onClick={() => { setFile(null); setPreview(null); setError(null); }}
+                onClick={() => { 
+                  setFile(null); 
+                  setPreview(null); 
+                  setError(null);
+                  setWaitingForNotification(false);
+                }}
                 className="px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-emerald-100">
                 Clear
               </button>
@@ -148,7 +170,16 @@ export default function Analysis() {
           <div className="md:w-1/2 bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
             <h2 className="text-lg font-semibold text-emerald-100 mb-3">Results</h2>
             <div className="min-h-[240px]">
-              {resultContent}
+              {waitingForNotification ? (
+                <div className="flex flex-col items-center justify-center h-full py-8">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 mb-4"></div>
+                  <p className="text-emerald-200 text-center mb-2">Analysis submitted successfully!</p>
+                  <p className="text-emerald-300 text-sm text-center">Processing your image... You will receive a notification when the analysis is complete.</p>
+                  <p className="text-emerald-400 text-xs text-center mt-4">Check the notification bell icon in the header for updates.</p>
+                </div>
+              ) : (
+                resultContent
+              )}
             </div>
           </div>
         </div>

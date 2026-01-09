@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

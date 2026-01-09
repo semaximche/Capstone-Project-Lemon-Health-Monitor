@@ -154,34 +154,51 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setNotifications(prev => prev.map(it => it.id === n.id ? { ...it, read: true } : it));
 
         const aid = n.analysis_id;
+        
+        // If analysis is already cached, use it
         if (analyses[aid]) {
             setSelectedAnalysis(analyses[aid]);
             navigate('/dashboard');
             return;
         }
 
-        // // fetch analysis details from API
-        // try {
-        //     const resp = await fetch(`http://127.0.0.1:8000/v1/analysis/${aid}`, {
-        //         headers: token ? { Authorization: `Bearer ${token}` } : {},
-        //     });
-        //         if (resp.ok) {
-        //         const data = await resp.json();
-        //         const ad: AnalysisData = {
-        //             id: aid,
-        //             user_id: data.user_id || n.user_id,
-        //             presigned_url: data.presigned_url || data.image || data.url,
-        //             description: data.description || data.results || '',
-        //             summary: data.summary || data.summary_text || '',
-        //         };
-        //         setAnalyses(prev => ({ ...prev, [aid]: ad }));
-        //         setSelectedAnalysis(ad);
-        //     } else {
-        //         console.warn('failed to fetch analysis', resp.status);
-        //     }
-        // } catch (e) {
-        //     console.error('error fetching analysis', e);
-        // }
+        // Fetch analysis details from API if not cached
+        try {
+            const resp = await fetch(`http://127.0.0.1:8000/v1/me/analysis/${aid}`, {
+                headers: token ? { Authorization: `Bearer ${token}`, Accept: 'application/json' } : { Accept: 'application/json' },
+            });
+            
+            if (resp.ok) {
+                const data = await resp.json();
+                const ad: AnalysisData = {
+                    id: data.id || aid,
+                    user_id: data.user_id || n.user_id,
+                    presigned_url: data.presigned_url || data.image || data.url,
+                    description: data.description || '',
+                    summary: data.summary || '',
+                };
+                setAnalyses(prev => ({ ...prev, [aid]: ad }));
+                setSelectedAnalysis(ad);
+            } else {
+                console.warn('failed to fetch analysis', resp.status);
+                // Still set minimal data so dashboard can attempt to fetch
+                setSelectedAnalysis({
+                    id: aid,
+                    user_id: n.user_id,
+                    description: '',
+                    summary: '',
+                });
+            }
+        } catch (e) {
+            console.error('error fetching analysis', e);
+            // Still set minimal data so dashboard can attempt to fetch
+            setSelectedAnalysis({
+                id: aid,
+                user_id: n.user_id,
+                description: '',
+                summary: '',
+            });
+        }
 
         navigate('/dashboard');
     };

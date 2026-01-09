@@ -4,21 +4,15 @@ active_connections = {}
 
 async def connect(user_id: str, websocket: WebSocket):
     # Check if user already has an active connection
-    # existing_connection = active_connections.get(user_id)
-    # if existing_connection:
-    #     # Close the existing connection
-    #     try:
-    #         await existing_connection.close()
-    #         print(f"Closed existing connection for user: {user_id}")
-    #     except Exception as e:
-    #         print(f"Error closing existing connection for user {user_id}: {e}")
-    #     # Remove from active connections
-    #     active_connections.pop(user_id, None)
-    
-    # Accept the new connection
-    await websocket.accept()
-    active_connections[user_id] = websocket
-    print("new connection added:", user_id)
+    existing_connection = active_connections.get(user_id)
+    if not existing_connection:
+        # Close the existing connection
+        await websocket.accept()
+        active_connections[user_id] = websocket
+        print("new connection added:", user_id)
+    else:
+        print("user already connected:", user_id)
+
 
 async def disconnect(user_id: str):
     connection = active_connections.pop(user_id, None)
