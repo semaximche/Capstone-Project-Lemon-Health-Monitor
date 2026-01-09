@@ -74,18 +74,29 @@ class AnalysisService:
         except:
             return False
 
-
-    async def get_analyses_by_user(self,user_id:str, db: Session) -> list[type[Analysis]]:
+    async def get_analyses_by_user(
+            self,
+            user_id: str,
+            db: Session
+    ) -> list[AnalysisResponse]:
 
         try:
-            reponse= analysis_crud.get_by_user_id(db,user_id)
-            return reponse
+            analyses = analysis_crud.get_by_user_id(db, user_id)
+
+            return [
+                AnalysisResponse(
+                    id=analysis.id,
+                    description=analysis.description,
+                    summary=analysis.summary,
+                )
+                for analysis in analyses
+            ]
+
         except Exception as e:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=str(e),
             )
-
 
 
 

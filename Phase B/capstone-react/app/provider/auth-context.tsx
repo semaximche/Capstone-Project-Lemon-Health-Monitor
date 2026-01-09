@@ -28,6 +28,7 @@ interface AuthContextType {
     markAllRead: () => void;
     analyses: Record<string, AnalysisData>;
     selectedAnalysis: AnalysisData | null;
+    setSelectedAnalysis: (analysis: AnalysisData | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -40,6 +41,7 @@ const AuthContext = createContext<AuthContextType>({
     markAllRead: () => {},
     analyses: {},
     selectedAnalysis: null,
+    setSelectedAnalysis: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -203,7 +205,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         navigate('/dashboard');
     };
 
-    const value = useMemo(() => ({ token, login, logout, notifications, unreadCount, openNotification, markAllRead, analyses, selectedAnalysis }), [token, notifications, analyses, selectedAnalysis]);
+    const value = useMemo(() => ({ token, login, logout, notifications, unreadCount, openNotification, markAllRead, analyses, selectedAnalysis, setSelectedAnalysis }), [token, notifications, analyses, selectedAnalysis]);
 
     return (
         <AuthContext.Provider value={value}>

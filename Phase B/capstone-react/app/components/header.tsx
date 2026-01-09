@@ -9,7 +9,7 @@ export function Header({ onToggleSidebar }: {onToggleSidebar:() => void}) {
   const [showNotif, setShowNotif] = useState(false);
 
   return (
-    <header className="flex h-14 items-center justify-between px-4 shadow-sm bg-gradient-to-r from-green-700 to-green-900 text-white">
+    <header className="flex h-14 items-center justify-between px-4 shadow-sm bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-white border-b border-slate-600">
       <div className="flex items-center gap-3">
         <button
           aria-label="Toggle sidebar"
@@ -23,13 +23,19 @@ export function Header({ onToggleSidebar }: {onToggleSidebar:() => void}) {
           </div>
         </button>
 
-        <span className="text-lg font-semibold">Lemon Disease Detection</span>
+        <button 
+          onClick={() => navigate('/')}
+          className="text-lg font-semibold hover:text-emerald-300 transition-colors cursor-pointer"
+        >
+          Lemon Disease Detection
+        </button>
       </div>
 
       <div className="flex items-center gap-3">
             {token ? (
           <>
             <button onClick={() => navigate('/analysis')} className="text-sm px-3 py-1 rounded bg-white/10 hover:bg-white/20">Analysis</button>
+            <button onClick={() => navigate('/analyses')} className="text-sm px-3 py-1 rounded bg-white/10 hover:bg-white/20">My Analyses</button>
 
             <div className="relative">
               <button

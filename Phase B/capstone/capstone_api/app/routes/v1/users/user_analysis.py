@@ -25,6 +25,8 @@ async def get_current_user_analyses(
     db: Session = Depends(get_db),
 ) -> List[AnalysisResponse]:
     """Get all analyses for the current logged-in user."""
+
+    # TODO:need to add pagination param to the request
     return await analysis_service.get_analyses_by_user(current_user.id, db)
 
 
