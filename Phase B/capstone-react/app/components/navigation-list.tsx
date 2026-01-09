@@ -1,16 +1,27 @@
 import { useNavigate, useLocation } from "react-router";
+import { useAuth } from "~/provider/auth-context";
 
 export function NavigationList() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { token } = useAuth();
 
-  const navItems = [
-    { path: "/", label: "Home", icon: "🏠" },
+  // Navigation items for signed out users
+  const signedOutNavItems = [
     { path: "/signin", label: "Sign In", icon: "🔐" },
     { path: "/register", label: "Register", icon: "📝" },
+    { path: "/about", label: "About", icon: "ℹ️" },
+  ];
+
+  // Navigation items for signed in users
+  const signedInNavItems = [
+    { path: "/", label: "Home", icon: "🏠" },
     { path: "/analysis", label: "Analysis", icon: "🔬" },
     { path: "/about", label: "About", icon: "ℹ️" },
   ];
+
+  // Use appropriate nav items based on auth status
+  const navItems = token ? signedInNavItems : signedOutNavItems;
 
   const isActive = (path: string) => {
     if (path === "/") {

@@ -8,4 +8,5 @@ export default [
     route("analyses", "routes/analyses.tsx"),
     route("dashboard", "routes/dashboard.tsx"),
     route("about", "routes/about.tsx"),
+    route("chatbot", "routes/chatbot.tsx"),
 ] satisfies RouteConfig;

@@ -153,6 +153,9 @@ export default function Welcome() {
           <button onClick={() => navigate('/register')} className="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-emerald-100 transition-colors">Create account</button>
           <button onClick={() => navigate('/analysis')} className="px-4 py-2 rounded bg-sky-500 hover:bg-sky-400 text-white shadow transition-colors">Try demo (analysis)</button>
         </div>
+        <div className="mt-4 text-center">
+          <p className="text-sm text-emerald-300">💬 Need help? Click the chatbot button in the bottom right corner!</p>
+        </div>
       </section>
 
       {/* Features Carousel Section */}

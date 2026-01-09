@@ -6,6 +6,7 @@ import { AuthProvider } from "./provider/auth-context";
 import { useState } from "react";
 import { Header } from "~/components/header";
 import { Sidebar } from "~/components/sidebar";
+import { ChatbotButton } from "~/components/chatbot-button";
 
 // link and preload google fonts
 export const links: Route.LinksFunction = () => [
@@ -32,6 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <main className="pt-16">
             {children}
           </main>
+          <ChatbotButton />
         </AuthProvider>
         <ScrollRestoration />
         <Scripts />
