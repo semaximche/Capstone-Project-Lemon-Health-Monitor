@@ -167,7 +167,7 @@ export default function Analysis() {
             </div>
           </div>
 
-          <div className="md:w-1/2 bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
+          {/* <div className="md:w-1/2 bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
             <h2 className="text-lg font-semibold text-emerald-100 mb-3">Results</h2>
             <div className="min-h-[240px]">
               {waitingForNotification ? (
@@ -181,7 +181,7 @@ export default function Analysis() {
                 resultContent
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

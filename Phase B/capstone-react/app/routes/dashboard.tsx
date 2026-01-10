@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "~/provider/auth-context";
 import { useNavigate } from "react-router";
 import Alert from "~/components/alert";
+import AnalysisDisplay from "~/components/analysisDisplay";
 
 interface AnalysisDetails {
   id: string;
@@ -14,6 +15,7 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [analysisDetails, setAnalysisDetails] = useState<AnalysisDetails | null>(null);
+    const [resultsArrayData, setResultsArrayData] = useState<Array<AnalysisBox> | null>(null);
 
     const { token, selectedAnalysis } = useAuth();
     const navigate = useNavigate();
@@ -85,6 +87,25 @@ export default function Dashboard() {
       return () => { cancelled = true; };
     }, [selectedAnalysis?.id, token]);
 
+    // parsing analysisDetails safetly
+    useEffect(() => {
+      if (!analysisDetails?.description) {
+        setResultsArrayData(null);
+        return;
+      }
+
+      try {
+        analysisDetails.description = analysisDetails.description.replace(/'/g, '"');
+        const parsed = JSON.parse(analysisDetails.description);
+        console.log(parsed);
+        setResultsArrayData(parsed);
+
+      } catch (err) {
+        console.error("Failed to parse analysis description", err);
+        setResultsArrayData(null);
+      }
+    }, [analysisDetails]);
+
     if (!selectedAnalysis) {
       return (
         <div className="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-800 to-black/80 p-6">
@@ -130,22 +151,12 @@ export default function Dashboard() {
               {/* Analysis Image */}
               <div className="bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
                 <h2 className="text-lg font-semibold text-emerald-100 mb-4">Analysis Image</h2>
-                {analysisDetails.image ? (
-                  <div className="flex justify-center">
-                    <img
-                      src={
-                        analysisDetails.image.startsWith('data:')
-                          ? analysisDetails.image
-                          : `data:image/jpeg;base64,${analysisDetails.image}`
-                      }
-                      alt="Analysis result"
-                      className="max-w-full h-auto rounded-lg border border-emerald-700 shadow-lg"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center h-64 text-emerald-300 border border-emerald-700 rounded-lg">
-                    <p>No image available</p>
-                  </div>
+                {(analysisDetails.image && resultsArrayData) ? (
+                      <AnalysisDisplay data={{image: analysisDetails.image, classifications: resultsArrayData}} />
+                    ) : (
+                      <p className="text-emerald-200">
+                        No visual analysis data available.
+                      </p>
                 )}
               </div>
 

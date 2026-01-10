@@ -40,15 +40,18 @@ export default function AnalysisDisplay({ data }: { data: ResultsDisplay}) {
     <div className="w-full flex justify-center p-4">
       <div className="relative inline-block">
         <img
-          ref={imgRef}
-          src={data.image}
-          alt="AI result"
-          onLoad={handleImageLoad}
-          className="max-w-full h-auto rounded-lg"
+          src={
+            data.image.startsWith('data:')
+              ? data.image
+              : `data:image/jpeg;base64,${data.image}`
+          }
+          alt="Analysis result"
+          className="max-w-full h-auto rounded-lg border border-emerald-700 shadow-lg"
         />
 
         {data.classifications.map((item, idx) => {
           const [x1, y1, x2, y2] = item.box;
+          console.log(item);
 
           return (
             <div
@@ -62,7 +65,7 @@ export default function AnalysisDisplay({ data }: { data: ResultsDisplay}) {
               }}
             >
               <div className="absolute -top-6 left-0 bg-lime-400 text-black text-xs font-semibold px-2 py-0.5 rounded">
-                {item.disease_class}
+                {item.efficientnet_class_name}
               </div>
             </div>
           );
