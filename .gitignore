@@ -3,7 +3,6 @@
 # -------------------
 
 Phase B/model-training/runs
-*.pt
 *.ps1
 
 # ----------------
