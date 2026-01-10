@@ -7,6 +7,7 @@ interface AnalysisDetails {
   id: string;
   description: string;
   summary: string;
+  image?: string; // Base64 encoded image
 }
 
 export default function Dashboard() {
@@ -54,11 +55,12 @@ export default function Dashboard() {
           const data = await resp.json();
           if (cancelled) return;
           
-          // Map the response to match AnalysisResponse structure: id, description, summary
+          // Map the response to match AnalysisResponse structure: id, description, summary, image
           setAnalysisDetails({
             id: data.id || selectedAnalysis.id || '',
             description: data.description || selectedAnalysis.description || '',
             summary: data.summary || selectedAnalysis.summary || '',
+            image: data.image || undefined, // Base64 encoded image
           });
         } catch (e) {
           if (cancelled) return;
@@ -66,11 +68,12 @@ export default function Dashboard() {
           setError(e instanceof Error ? e.message : 'Failed to load analysis details');
           
           // Fallback to cached data if available
-          if (selectedAnalysis && (selectedAnalysis.description || selectedAnalysis.summary)) {
+          if (selectedAnalysis && (selectedAnalysis.description || selectedAnalysis.summary || selectedAnalysis.image)) {
             setAnalysisDetails({
               id: selectedAnalysis.id || '',
               description: selectedAnalysis.description || '',
               summary: selectedAnalysis.summary || '',
+              image: selectedAnalysis.image, // Use cached image if available
             });
           }
         } finally {
@@ -124,19 +127,33 @@ export default function Dashboard() {
                 <p className="text-lg text-emerald-100 font-mono">{analysisDetails.id}</p>
               </div>
 
+              {/* Analysis Image */}
+              <div className="bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
+                <h2 className="text-lg font-semibold text-emerald-100 mb-4">Analysis Image</h2>
+                {analysisDetails.image ? (
+                  <div className="flex justify-center">
+                    <img
+                      src={
+                        analysisDetails.image.startsWith('data:')
+                          ? analysisDetails.image
+                          : `data:image/jpeg;base64,${analysisDetails.image}`
+                      }
+                      alt="Analysis result"
+                      className="max-w-full h-auto rounded-lg border border-emerald-700 shadow-lg"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center h-64 text-emerald-300 border border-emerald-700 rounded-lg">
+                    <p>No image available</p>
+                  </div>
+                )}
+              </div>
+
               {/* Summary */}
               <div className="bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
                 <h2 className="text-lg font-semibold text-emerald-100 mb-4">Summary</h2>
                 <p className="text-emerald-200 whitespace-pre-wrap leading-relaxed">
                   {analysisDetails.summary || 'No summary available.'}
-                </p>
-              </div>
-
-              {/* Description */}
-              <div className="bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
-                <h2 className="text-lg font-semibold text-emerald-100 mb-4">Description</h2>
-                <p className="text-emerald-200 whitespace-pre-wrap leading-relaxed">
-                  {analysisDetails.description || 'No description available.'}
                 </p>
               </div>
             </div>

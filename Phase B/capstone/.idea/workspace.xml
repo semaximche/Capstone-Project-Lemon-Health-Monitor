@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../capstone-react/app/components/navigation-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/components/navigation-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capstone_api/app/utils/image_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,22 +50,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.gemini_model.executor": "Run",
-    "Python.init_db (1).executor": "Run",
-    "Python.init_db.executor": "Run",
-    "Python.main (1).executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.gemini_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.init_db (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.init_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\routes\v1\users" />
@@ -231,15 +233,5 @@
       <updated>1765654687021</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/inference/inference/app/storage/storage_service.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

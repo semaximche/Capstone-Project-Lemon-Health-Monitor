@@ -7,6 +7,7 @@ interface AnalysisData {
     presigned_url?: string;
     description?: string;
     summary?: string;
+    image?: string; // Base64 encoded image
 }
 
 interface NotificationItem {
@@ -128,13 +129,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setNotifications(prev => [item, ...prev]);
 
                 // if full analysis details included, cache them
-                if (payload.presigned_url || payload.description || payload.summary) {
+                if (payload.presigned_url || payload.description || payload.summary || payload.image) {
                     setAnalyses(prev => ({ ...prev, [String(payload.analysis_id)]: {
                         id: String(payload.analysis_id),
                         user_id: payload.user_id || userId,
                         presigned_url: payload.presigned_url,
                         description: payload.description,
                         summary: payload.summary,
+                        image: payload.image,
                     }}));
                 }
             } catch (e) {
@@ -175,9 +177,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const ad: AnalysisData = {
                     id: data.id || aid,
                     user_id: data.user_id || n.user_id,
-                    presigned_url: data.presigned_url || data.image || data.url,
+                    presigned_url: data.presigned_url || data.url,
                     description: data.description || '',
                     summary: data.summary || '',
+                    image: data.image, // Base64 encoded image
                 };
                 setAnalyses(prev => ({ ...prev, [aid]: ad }));
                 setSelectedAnalysis(ad);

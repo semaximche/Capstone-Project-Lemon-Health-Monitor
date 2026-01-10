@@ -32,7 +32,7 @@ class Settings(BaseSettings):
 
     # Object Storage settings (for image storage)
     storage_host: str = Field(
-        default="./data_storage/storage",
+        default="../data_storage/storage",
         description="Storage type: local, s3, minio, or firebase",
     )
     storage_bucket: str = Field(default="analysis", description="Storage bucket name")

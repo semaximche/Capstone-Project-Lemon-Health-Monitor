@@ -3,7 +3,7 @@ import shutil
 from pathlib import Path
 from typing import List
 from app.settings import settings
-
+from app.utils.image_encoder import image_to_base64
 class FileSystemStorageService:
     def __init__(self, base_path: str = "storage"):
         self.base_path = Path(base_path)
@@ -71,5 +71,12 @@ class FileSystemStorageService:
         """
         return self.full_path(object_name).exists()
 
+    def get_image_base64(self, object_name: str) -> str:
+        """
+        Read an image from storage and return it as base64 string.
+        """
+        print("path for image analysis is:" + object_name)
+        new_object_name = object_name.replace("\\", "/")
+        return image_to_base64(new_object_name)
 
 storage_service = FileSystemStorageService(settings.storage_host)

@@ -1,6 +1,6 @@
 """User analysis routes for retrieving analyses for a specific user."""
 from fastapi import HTTPException
-
+from app.storage.storage_service import storage_service
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 from typing import List
@@ -46,6 +46,7 @@ async def get_specific_analyses_for_current_user(
 
     """Get all analyses for the current logged-in user."""
     analysis = await analysis_service.get_analysis(analysis_id,db)
+    analysis_image = storage_service.get_image_base64(analysis.presigned_url)
     if not analysis:
         raise HTTPException(status_code=404, detail="Analysis not found")
     if analysis.user_id != current_user.id:
@@ -54,5 +55,5 @@ async def get_specific_analyses_for_current_user(
             detail="this uer cannot access this analysis",
         )
 
-    analysis_response = AnalysisResponse(id=analysis.id, description=analysis.description, summary=analysis.summary)
+    analysis_response = AnalysisResponse(id=analysis.id, description=analysis.description, summary=analysis.summary,image=analysis_image)
     return analysis_response

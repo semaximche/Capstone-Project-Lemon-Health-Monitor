@@ -10,7 +10,7 @@ class AnalysisResponse(BaseModel):
     id: str = ""
     description : str =""
     summary : str =""
-
+    image: str = ""
 class AnalysisCreate(QueueMessage):
     """Request model for creating a new analysis."""
 
