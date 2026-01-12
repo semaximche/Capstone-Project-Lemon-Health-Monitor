@@ -14,15 +14,15 @@ class LemonHealthAnalyzer:
 
     # Model and Inference Configuration
     CONFIDENCE_THRESHOLD = 0.3
-    INPUT_SIZE = 224
+    INPUT_SIZE = 300
     MEAN = [0.6368, 0.7232, 0.5855]
     STD = [0.3056, 0.2899, 0.3960]
     CLASS_NAMES = ['Anthracnose', 'Bacterial Blight', 'Citrus Canker', 'Curl Virus',
                    'Deficiency Leaf', 'Dry Leaf', 'Healthy Leaf', 'Sooty Mould', 'Spider Mites']
 
     # File Paths
-    YOLO_WEIGHTS_PATH = 'inference/app/yolo_253_epochs_fullsize.pt'
-    EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnetv2_47_epochs_halfsize.pth'
+    YOLO_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
+    EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnet50epochs.pth'
 
     def __init__(self):
         """Initializes the device, models, and image transforms."""

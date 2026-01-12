@@ -3,6 +3,7 @@ import { useAuth } from "~/provider/auth-context";
 import { useNavigate } from "react-router";
 import Alert from "~/components/alert";
 import AnalysisDisplay from "~/components/analysisDisplay";
+import Markdown from "react-markdown";
 
 interface AnalysisDetails {
   id: string;
@@ -164,7 +165,9 @@ export default function Dashboard() {
               <div className="bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
                 <h2 className="text-lg font-semibold text-emerald-100 mb-4">Summary</h2>
                 <p className="text-emerald-200 whitespace-pre-wrap leading-relaxed">
-                  {analysisDetails.summary || 'No summary available.'}
+                  <Markdown>
+                    {analysisDetails.summary || 'No summary available.'}
+                  </Markdown>
                 </p>
               </div>
             </div>

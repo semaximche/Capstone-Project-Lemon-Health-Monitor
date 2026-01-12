@@ -30,21 +30,19 @@ class PlantDiseaseReportGenerator:
         detection_results = self._format_detections(detections)
 
         return f"""
-Hello! I'm here to help you understand the results of your citrus plant disease detection.
+We are using visual model outputs on lemon tree images to detect and classify diseases. We want to give our users conservative analysis based on the model outputs to help them better treat and manage their lemon trees and lemon tree orchards.
+The analysis results are based on images taken from a camera, the images are taken through a YOLOv11 model to designate boxes of leaves, these boxes are taken through an EfficientNetV2 classifier to guess and detect disease and symptoms that the leaf is experiencing. In the results each element in the array describes one leaf detected.
 
-The analysis is based on:
-- **YOLOv8** for object detection
-- **EfficientNet** for disease classification
+### Output guidelines
+ - Base your answers on percentages of leaves experiencing a certain symptom or disease.
+ - If 75% or more of the leaves are classified as healthy it is fair to assume the plant is largely healthy too.
+ - If you see an overwhelming minority classification of one disease and symptom at around 30% then it is fair to assume the model is confident and that the tree is most likely experiencing these. You should give guidelines specific to the diagnosis on how to treat the plant and monitor for further inspections.
+ - If you see many different sporadic classifications of various diseases such as Canker Citrus, Anthracnose, Souty Mould and such it is fair to assume the model is not confident in one disease and therefor you should not advise to treat any one disease.
 
-### Confidence Guidelines
-- **High Confidence (Above 80%)** → Take immediate action (e.g., fungicides, pesticides)
-- **Moderate Confidence (60%–80%)** → Monitor closely and treat if symptoms progress
-- **Low Confidence (Below 60%)** → Further inspection recommended
-
-### Detection Results
+### Analysis Results
 {detection_results}
 
-Please summarize the findings clearly and provide practical recommendations per disease type.keep all the summary no more than 10 sentences
+Summaries the results findings and offer recommendations to the user on how to continue treating their lemon tree including guidelines to further monitor the plant health. Keep your analysis brief, no more than 4 paragraphs and avoid mentioning your guidelines instead focusing on natural language in your response.
 """
 
     def generate_report(self, detections) -> str:
