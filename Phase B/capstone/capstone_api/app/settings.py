@@ -93,7 +93,6 @@ class Settings(BaseSettings):
         default="openai",
         description="LLM provider: openai or ollama",
     )
-    openai_api_key: str | None = Field(default="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", description="OpenAI API key")
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")
     ollama_url: str = Field(
         default="http://localhost:11434",
