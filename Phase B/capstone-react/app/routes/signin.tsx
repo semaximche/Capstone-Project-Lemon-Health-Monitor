@@ -20,16 +20,21 @@ export default function Signin() {
     }
 
     return (
-        <div className="max-w-sm mx-auto mt-20 p-6 bg-black rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">Login</h2>
+        <div className="min-h-screen flex items-center justify-center p-6">
+        <div className="w-full max-w-md glass-panel rounded-2xl shadow-2xl border border-cyan-500/20 p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl" />
+            <div className="relative z-10">
+        <h2 className="text-2xl font-display font-bold text-gradient-cyan mb-4">Login</h2>
 
-        <input ref={usernameRef} className="w-full border p-2 rounded mb-3" placeholder="Email" />
+        <input ref={usernameRef} className="w-full border border-cyan-500/20 glass-panel placeholder-cyan-400/60 text-cyan-100 p-3 rounded-xl mb-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Email" />
 
-        <input ref={passwordRef} type="password" className="w-full border p-2 rounded mb-4" placeholder="Password" />
+        <input ref={passwordRef} type="password" className="w-full border border-cyan-500/20 glass-panel placeholder-cyan-400/60 text-cyan-100 p-3 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Password" />
 
-        <button onClick={handleClick} className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-500 transition">
+        <button onClick={handleClick} className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white py-3 rounded-xl font-semibold shadow-lg neon-glow hover-lift transition-all duration-300">
             Login
         </button>
+            </div>
+        </div>
         </div>
     )
 }

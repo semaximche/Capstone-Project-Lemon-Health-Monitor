@@ -10,6 +10,6 @@ export default function Alert({ type = "info", children }: AlertProps) {
   if (type === "error")
     return <div className={`${base} bg-red-900/30 border-red-700 text-red-100`}>{children}</div>;
   if (type === "success")
-    return <div className={`${base} bg-emerald-900/30 border-emerald-700 text-emerald-100`}>{children}</div>;
+    return <div className={`${base} bg-cyan-900/30 border-cyan-700 text-cyan-100`}>{children}</div>;
   return <div className={`${base} bg-sky-900/20 border-sky-700 text-sky-100`}>{children}</div>;
 }

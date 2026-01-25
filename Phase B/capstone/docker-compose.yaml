@@ -4,13 +4,13 @@ services:
     image: rabbitmq:3.13-management
     container_name: lemon-rabbitmq
     ports:
-      - "5672:5672"   # RabbitMQ main port
+      - "5672:5672" # RabbitMQ main port
       - "15672:15672" # Management UI
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin123
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -41,7 +41,8 @@ services:
       QUEUE_NAME: disease_jobs
       QUEUE_USER: admin
       QUEUE_PASSWORD: admin123
-
+      # RAG settings
+      RAG_VECTOR_DB_PATH: /app/data_storage/vector_db
       # JWT settings
       JWT_SECRET_KEY: f4d34c2b0af0c67da891b63be1d2ccfb3a1ec9d5afbb08be71a47b31f28d9c62
       JWT_ALGORITHM: HS256

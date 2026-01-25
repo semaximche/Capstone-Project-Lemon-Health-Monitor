@@ -116,13 +116,17 @@ export default function Analysis() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-800 to-black/80 p-6">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="text-2xl md:text-3xl text-emerald-100 font-bold mb-6">Image Analysis</h1>
+    <div className="min-h-screen p-6 md:p-8">
+      <div className="mx-auto max-w-6xl space-y-6">
+        <div className="glass-panel rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl" />
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gradient-cyan relative z-10">Image Analysis</h1>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
-            <h2 className="text-lg font-semibold text-emerald-100 mb-3">Upload an image</h2>
+          <div className="md:w-1/2 glass-panel rounded-xl p-6 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl" />
+            <h2 className="text-lg font-display font-semibold text-cyan-100 mb-3 relative z-10">Upload an image</h2>
 
             {error && (
               <div className="mb-4">
@@ -130,29 +134,29 @@ export default function Analysis() {
               </div>
             )}
 
-            <label className="block mb-4">
+            <label className="block mb-4 relative z-10">
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="block w-full text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-emerald-500 file:px-4 file:py-2 file:text-white hover:file:bg-emerald-400"
+                className="block w-full text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-gradient-to-r file:from-cyan-500 file:to-teal-500 file:px-4 file:py-2 file:text-white hover:file:from-cyan-400 hover:file:to-teal-400"
               />
             </label>
 
             {preview ? (
-              <div className="mb-4">
-                <img src={preview} alt="preview" className="w-full rounded-md object-contain max-h-60 mx-auto border" />
+              <div className="mb-4 relative z-10">
+                <img src={preview} alt="preview" className="w-full rounded-xl object-contain max-h-60 mx-auto border border-cyan-500/20 shadow-lg" />
               </div>
             ) : (
-              <div className="mb-4 text-sm text-slate-200">No image selected yet. Use the file control above to choose an image.</div>
+              <div className="mb-4 text-sm text-cyan-200/70 relative z-10">No image selected yet. Use the file control above to choose an image.</div>
             )}
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 relative z-10">
               <button
                 onClick={handleUpload}
-                disabled={loading}
-                className="flex-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white py-3 font-medium disabled:opacity-60 disabled:cursor-not-allowed shadow">
-                {loading ? "Analyzing..." : "Upload & Analyze"}
+                disabled={loading || waitingForNotification}
+                className="flex-1 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white py-3 text-sm sm:text-base font-semibold disabled:opacity-60 disabled:cursor-not-allowed shadow-lg neon-glow hover-lift transition-all duration-300">
+                {loading ? "Uploading..." : waitingForNotification ? "Processing..." : "Upload & Analyze"}
               </button>
               <button
                 onClick={() => { 
@@ -161,27 +165,40 @@ export default function Analysis() {
                   setError(null);
                   setWaitingForNotification(false);
                 }}
-                className="px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-emerald-100">
+                disabled={waitingForNotification}
+                className="w-full sm:w-auto px-4 py-3 rounded-xl glass-panel border-cyan-500/30 text-cyan-100 hover:bg-cyan-500/10 hover-lift transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                 Clear
               </button>
             </div>
           </div>
 
-          {/* <div className="md:w-1/2 bg-white/5 border border-emerald-700 rounded-xl p-6 shadow-lg">
-            <h2 className="text-lg font-semibold text-emerald-100 mb-3">Results</h2>
-            <div className="min-h-[240px]">
-              {waitingForNotification ? (
-                <div className="flex flex-col items-center justify-center h-full py-8">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 mb-4"></div>
-                  <p className="text-emerald-200 text-center mb-2">Analysis submitted successfully!</p>
-                  <p className="text-emerald-300 text-sm text-center">Processing your image... You will receive a notification when the analysis is complete.</p>
-                  <p className="text-emerald-400 text-xs text-center mt-4">Check the notification bell icon in the header for updates.</p>
+          {/* Loading State - Shows while waiting for notification */}
+          {waitingForNotification && (
+            <div className="md:w-1/2 glass-panel rounded-xl p-8 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-teal-500/10 animate-pulse" />
+              <div className="relative z-10 flex flex-col items-center justify-center min-h-[300px] py-8">
+                <div className="relative mb-6">
+                  <div className="inline-block w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full animate-pulse"></div>
+                  </div>
                 </div>
-              ) : (
-                resultContent
-              )}
+                <h3 className="text-xl sm:text-2xl font-display font-semibold text-cyan-100 mb-3 text-center">Analysis in Progress</h3>
+                <p className="text-cyan-200/80 text-center mb-2 max-w-md">
+                  Your image has been uploaded successfully!
+                </p>
+                <p className="text-cyan-300/70 text-sm text-center mb-4 max-w-md">
+                  Our AI models are processing your image. This may take a few moments...
+                </p>
+                <div className="flex items-center gap-2 text-cyan-400/60 text-xs">
+                  <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                  <span>You'll receive a notification when the analysis is complete</span>
+                </div>
+              </div>
             </div>
-          </div> */}
+          )}
         </div>
       </div>
     </div>

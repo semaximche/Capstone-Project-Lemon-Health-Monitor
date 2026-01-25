@@ -12,7 +12,7 @@ import { ChatbotButton } from "~/components/chatbot-button";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous", },
-  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Noto+Color+Emoji&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap", },
+  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Color+Emoji&display=swap", },
 ];
 
 // root layout
@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Links />
       </head>
-      <body className="bg-white dark:bg-gray-950 text-black dark:text-white">
+      <body className="bg-[#0a0e1a] text-cyan-50 scientific-grid min-h-screen relative overflow-x-hidden">
         <AuthProvider>
           <Sidebar open={sidebarOpen} onToggleSidebar={() => setSidebarOpen(false)} />
           <Header onToggleSidebar={() => setSidebarOpen(true)} />

@@ -43,12 +43,20 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
   }, [messages, isOpen]);
 
   const handleSend = async () => {
-    if (!input.trim() || loading) return;
+    const trimmedInput = input.trim();
+    
+    // Validate input
+    if (!trimmedInput || loading) return;
+    
+    if (trimmedInput.length > 2000) {
+      setError("Query is too long. Maximum length is 2000 characters.");
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: input.trim(),
+      content: trimmedInput,
       timestamp: new Date(),
     };
 
@@ -57,31 +65,63 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
     setLoading(true);
     setError(null);
 
-    // TODO: Replace with actual API call when backend is ready
-    // Example API call structure:
-    // const response = await fetch("http://127.0.0.1:8000/v1/chat/message", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     ...(token && { Authorization: `Bearer ${token}` }),
-    //   },
-    //   body: JSON.stringify({
-    //     message: userMessage.content,
-    //     conversation_id: conversationId, // Optional: for continuing conversations
-    //   }),
-    // });
+    try {
+      const response = await fetch("http://127.0.0.1:8000/v1/chatbot/query", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          ...(token && { Authorization: `Bearer ${token}` }),
+        },
+        body: JSON.stringify({
+          query: trimmedInput,
+        }),
+      });
 
-    // Simulate API delay
-    setTimeout(() => {
+      if (!response.ok) {
+        let errorMessage = `Request failed (${response.status})`;
+        try {
+          const contentType = response.headers.get("content-type") || "";
+          if (contentType.includes("application/json")) {
+            const err = await response.json();
+            errorMessage = err.message || err.detail || JSON.stringify(err) || errorMessage;
+          } else {
+            const text = await response.text();
+            errorMessage = text || errorMessage;
+          }
+        } catch (e) {
+          // Use default error message
+        }
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      
+      // Handle ChatResponse format: { response: string, query: string }
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: "This is a template response. The chatbot backend is not yet implemented. Once the RAG system is ready, I'll be able to answer questions about the project using the private documentation!",
+        content: data.response || "No response received.",
         timestamp: new Date(),
       };
+      
       setMessages((prev) => [...prev, assistantMessage]);
+    } catch (err) {
+      console.error("Chatbot API error:", err);
+      const errorMessage = err instanceof Error ? err.message : "Failed to get response from chatbot. Please try again.";
+      setError(errorMessage);
+      
+      // Optionally add an error message to the chat
+      const errorChatMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "Sorry, I encountered an error. Please try again or check your connection.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorChatMessage]);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -115,7 +155,7 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed bottom-20 right-4 md:right-6 w-[calc(100vw-2rem)] md:w-96 h-[calc(100vh-8rem)] md:h-[600px] bg-gradient-to-b from-emerald-900 via-emerald-800 to-black/90 border border-emerald-700 rounded-xl shadow-2xl z-50 flex flex-col">
+      <div className="fixed bottom-4 sm:bottom-20 right-2 sm:right-4 md:right-6 w-[calc(100vw-1rem)] sm:w-[calc(100vw-2rem)] md:w-96 h-[calc(100vh-2rem)] sm:h-[calc(100vh-8rem)] md:h-[600px] max-h-[600px] bg-gradient-to-b from-emerald-900 via-emerald-800 to-black/90 border border-emerald-700 rounded-xl shadow-2xl z-50 flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-emerald-700 bg-emerald-900/50 rounded-t-xl">
           <div className="flex items-center gap-3">
@@ -136,12 +176,6 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
           </button>
         </div>
 
-        {/* Template Mode Alert */}
-        <div className="px-4 pt-3">
-          <Alert type="info">
-            <span className="text-xs">⚠️ Template Mode: Backend not yet implemented</span>
-          </Alert>
-        </div>
 
         {/* Messages Container */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -237,10 +271,16 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
               ref={inputRef}
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value.length <= 2000) {
+                  setInput(value);
+                }
+              }}
               onKeyPress={handleKeyPress}
-              placeholder="Ask a question..."
+              placeholder="Ask a question... (max 2000 chars)"
               disabled={loading}
+              maxLength={2000}
               className="flex-1 px-3 py-2 text-sm rounded-lg bg-white/10 border border-emerald-700 text-emerald-100 placeholder-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50"
             />
             <button

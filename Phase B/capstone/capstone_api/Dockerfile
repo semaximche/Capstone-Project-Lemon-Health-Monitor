@@ -10,8 +10,8 @@ COPY capstone_api/pyproject.toml ./
 COPY capstone_api/app ./app
 COPY capstone_api/requirements.txt* ./
 
-# Install dependencies using uv
-RUN uv sync
+# Install dependencies using uv (use the Python from base image)
+RUN uv sync --python python
 
 # data_storage will be mounted at runtime, no need to copy
 

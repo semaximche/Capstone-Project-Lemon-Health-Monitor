@@ -35,6 +35,7 @@ class Settings(BaseSettings):
         default="../data_storage/storage",
         description="Storage type: local, s3, minio, or firebase",
     )
+    gemini_api_key: str = Field(default="AIzaSyC8v2RKgmKAgxsQyhGQp0ZEkxq5RFr5XXk")
     storage_bucket: str = Field(default="analysis", description="Storage bucket name")
     storage_endpoint: str | None = Field(default="users", description="Storage endpoint URL (for S3/Minio)")
     storage_access_key: str | None = Field(default="admin", description="Storage access key")
@@ -92,7 +93,7 @@ class Settings(BaseSettings):
         default="openai",
         description="LLM provider: openai or ollama",
     )
-    openai_api_key: str | None = Field(default=None, description="OpenAI API key")
+    openai_api_key: str | None = Field(default="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", description="OpenAI API key")
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")
     ollama_url: str = Field(
         default="http://localhost:11434",
@@ -100,6 +101,22 @@ class Settings(BaseSettings):
     )
     ollama_model: str = Field(default="llama3", description="Ollama model to use")
 
+    # RAG settings
+    rag_vector_db_path: str = Field(
+        default="../data_storage/vector_db",
+        description="Path to vector database storage",
+    )
+    rag_embedding_model: str = Field(
+        default="all-MiniLM-L6-v2",
+        description="Sentence transformer model for embeddings",
+    )
+    rag_chunk_size: int = Field(default=800, description="Text chunk size for document processing")
+    rag_chunk_overlap: int = Field(default=150, description="Overlap between text chunks")
+    rag_collection_name: str = Field(
+        default="project_book",
+        description="ChromaDB collection name",
+    )
+    rag_top_k: int = Field(default=5, description="Number of top results to retrieve from vector search")
 
     # Rabbitmq settings
     queue_host: str = Field(default="localhost", description="Rabbitmq server host")

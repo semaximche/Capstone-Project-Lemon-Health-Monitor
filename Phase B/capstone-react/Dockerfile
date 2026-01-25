@@ -1,22 +1,47 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
-WORKDIR /app
-RUN npm ci
+# Multi-stage Dockerfile for React Router SSR application
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
+# Stage 1: Install dependencies
+FROM node:20-alpine AS dependencies
 WORKDIR /app
-RUN npm ci --omit=dev
+# Copy package files for better layer caching
+COPY package.json package-lock.json ./
+# Install all dependencies (including dev dependencies for build)
+RUN npm ci --include=dev
 
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
+# Stage 2: Build the application
+FROM node:20-alpine AS build
 WORKDIR /app
+# Copy dependencies from previous stage
+COPY --from=dependencies /app/node_modules ./node_modules
+# Copy source code
+COPY . .
+# Build the application
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+# Stage 3: Production runtime
+FROM node:20-alpine AS production
 WORKDIR /app
+
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+
+# Copy built application from build stage
+COPY --from=build /app/build ./build
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S reactuser -u 1001 && \
+    chown -R reactuser:nodejs /app
+
+USER reactuser
+
+# Expose port (React Router default is 3000, adjust if needed)
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# Start the application
 CMD ["npm", "run", "start"]

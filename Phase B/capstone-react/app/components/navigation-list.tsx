@@ -36,24 +36,24 @@ export function NavigationList() {
         <li key={item.path}>
           <button
             onClick={() => navigate(item.path)}
-            className={`w-full text-left rounded-lg px-4 py-3 transition-all duration-200 flex items-center gap-3 ${
+            className={`w-full text-left rounded-xl px-5 py-4 transition-all duration-300 flex items-center gap-4 hover-lift ${
               isActive(item.path)
-                ? "bg-emerald-600 text-white shadow-lg"
-                : "text-emerald-100 hover:bg-emerald-800/50 hover:text-white"
+                ? "bg-gradient-to-r from-cyan-500/20 to-teal-500/20 text-cyan-100 border border-cyan-500/30 neon-glow-cyan shadow-lg"
+                : "text-cyan-200/70 hover:bg-cyan-500/10 hover:text-cyan-100 border border-transparent hover:border-cyan-500/20"
             }`}
           >
-            <span className="text-xl">{item.icon}</span>
-            <span className="font-medium">{item.label}</span>
+            <span className="text-2xl">{item.icon}</span>
+            <span className="font-display font-medium text-base">{item.label}</span>
           </button>
         </li>
       ))}
       <li>
         <button
           onClick={() => window.open("https://github.com/semaximche/Capstone-Project-Lemon-Health-Monitor", "_blank")}
-          className="w-full text-left rounded-lg px-4 py-3 transition-all duration-200 flex items-center gap-3 text-emerald-100 hover:bg-emerald-800/50 hover:text-white"
+          className="w-full text-left rounded-xl px-5 py-4 transition-all duration-300 flex items-center gap-4 text-cyan-200/70 hover:bg-cyan-500/10 hover:text-cyan-100 border border-transparent hover:border-cyan-500/20 hover-lift"
         >
-          <span className="text-xl">💻</span>
-          <span className="font-medium">GitHub</span>
+          <span className="text-2xl">💻</span>
+          <span className="font-display font-medium text-base">GitHub</span>
         </button>
       </li>
     </ul>

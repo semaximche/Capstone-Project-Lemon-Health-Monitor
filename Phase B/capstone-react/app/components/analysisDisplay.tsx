@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import type { ResultsDisplay } from "~/types/analysis";
 
 export default function AnalysisDisplay({ data }: { data: ResultsDisplay }) {
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -31,21 +32,21 @@ export default function AnalysisDisplay({ data }: { data: ResultsDisplay }) {
           ref={imgRef}
           onLoad={updateScale}
           src={
-            data.image.startsWith("data:")
+            data.image?.startsWith("data:")
               ? data.image
               : `data:image/jpeg;base64,${data.image}`
           }
           alt="Analysis result"
-          className="max-w-full h-auto rounded-lg border border-emerald-700 shadow-lg"
+          className="max-w-full h-auto rounded-xl border-2 border-cyan-500/30 shadow-2xl"
         />
 
-        {data.classifications.map((item, idx) => {
+        {data.classifications && data.classifications.map((item, idx) => {
           const [x1, y1, x2, y2] = item.box;
 
           return (
             <div
               key={idx}
-              className="absolute border-2 border-lime-400 rounded-md pointer-events-none"
+              className="absolute border-2 border-cyan-400 rounded-lg pointer-events-none neon-glow"
               style={{
                 left: x1 * scale.x,
                 top: y1 * scale.y,
@@ -53,7 +54,7 @@ export default function AnalysisDisplay({ data }: { data: ResultsDisplay }) {
                 height: (y2 - y1) * scale.y,
               }}
             >
-              <div className="absolute -top-6 left-0 bg-lime-400 text-black text-xs font-semibold px-2 py-0.5 rounded whitespace-nowrap">
+              <div className="absolute -top-7 left-0 bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-xs font-display font-semibold px-3 py-1 rounded-lg shadow-lg whitespace-nowrap">
                 {item.efficientnet_class_name}
               </div>
             </div>

@@ -120,16 +120,19 @@ export default function Analyses() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-800 to-black/80 p-6">
+    <div className="min-h-screen p-6 md:p-8">
       <div className="mx-auto max-w-7xl space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl text-emerald-100 font-bold">My Analyses</h1>
-          <button
-            onClick={() => navigate('/analysis')}
-            className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-medium"
-          >
-            New Analysis
-          </button>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl" />
+          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-4">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gradient-cyan">My Analyses</h1>
+            <button
+              onClick={() => navigate('/analysis')}
+              className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold shadow-lg neon-glow hover-lift transition-all duration-300"
+            >
+              New Analysis
+            </button>
+          </div>
         </div>
 
         {error && (
@@ -137,19 +140,23 @@ export default function Analyses() {
         )}
 
         {loading && analyses.length === 0 ? (
-          <div className="bg-white/5 border border-emerald-700 rounded-xl p-8 shadow-lg text-center">
-            <div className="text-emerald-200">Loading analyses...</div>
+          <div className="glass-panel rounded-2xl p-8 shadow-2xl text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent animate-pulse" />
+            <div className="relative z-10 text-cyan-200">Loading analyses...</div>
           </div>
         ) : analyses.length === 0 ? (
-          <div className="bg-white/5 border border-emerald-700 rounded-xl p-8 shadow-lg text-center">
-            <h2 className="text-xl font-semibold text-emerald-100 mb-2">No analyses found</h2>
-            <p className="text-emerald-200 mb-4">You haven't created any analyses yet.</p>
-            <button
-              onClick={() => navigate('/analysis')}
-              className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-medium"
-            >
-              Create Your First Analysis
-            </button>
+          <div className="glass-panel rounded-2xl p-8 shadow-2xl text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <h2 className="text-xl font-display font-semibold text-cyan-100 mb-2">No analyses found</h2>
+              <p className="text-cyan-200/80 mb-4">You haven't created any analyses yet.</p>
+              <button
+                onClick={() => navigate('/analysis')}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold shadow-lg neon-glow hover-lift transition-all duration-300"
+              >
+                Create Your First Analysis
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -158,35 +165,38 @@ export default function Analyses() {
                 <div
                   key={analysis.id}
                   onClick={() => handleAnalysisClick(analysis)}
-                  className="bg-white/5 border border-emerald-700 rounded-xl p-5 shadow-lg hover:bg-white/10 hover:border-emerald-500 cursor-pointer transition-all duration-200 flex flex-col"
+                  className="glass-panel rounded-xl p-5 shadow-2xl hover-lift cursor-pointer transition-all duration-200 flex flex-col border border-cyan-500/20 hover:border-cyan-500/40 relative overflow-hidden group"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-sm font-semibold text-emerald-300 uppercase tracking-wide">
-                      Analysis {analysis.id.slice(0, 8)}
-                    </h3>
-                    <span className="text-xs text-emerald-400">
-                      {formatDate(analysis.created_at)}
-                    </span>
-                  </div>
-                  
-                  {analysis.summary && (
-                    <p className="text-emerald-200 text-sm mb-3 line-clamp-3 flex-grow">
-                      {analysis.summary}
-                    </p>
-                  )}
-                  
-                  {analysis.description && (
-                    <p className="text-emerald-300 text-xs line-clamp-2 opacity-75">
-                      {analysis.description}
-                    </p>
-                  )}
-                  
-                  {!analysis.summary && !analysis.description && (
-                    <p className="text-emerald-400 text-sm italic">No details available</p>
-                  )}
-                  
-                  <div className="mt-4 pt-3 border-t border-emerald-700/50">
-                    <span className="text-xs text-emerald-400">Click to view details →</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-sm font-display font-semibold text-cyan-300 uppercase tracking-wide">
+                        Analysis {analysis.id.slice(0, 8)}
+                      </h3>
+                      <span className="text-xs text-cyan-400">
+                        {formatDate(analysis.created_at)}
+                      </span>
+                    </div>
+                    
+                    {analysis.summary && (
+                      <p className="text-cyan-200/80 text-sm mb-3 line-clamp-3 flex-grow">
+                        {analysis.summary}
+                      </p>
+                    )}
+                    
+                    {analysis.description && (
+                      <p className="text-cyan-300/70 text-xs line-clamp-2">
+                        {analysis.description}
+                      </p>
+                    )}
+                    
+                    {!analysis.summary && !analysis.description && (
+                      <p className="text-cyan-400/60 text-sm italic">No details available</p>
+                    )}
+                    
+                    <div className="mt-4 pt-3 border-t border-cyan-500/20">
+                      <span className="text-xs text-cyan-400">Click to view details →</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -197,7 +207,7 @@ export default function Analyses() {
                 <button
                   onClick={handleLoadMore}
                   disabled={loadingMore}
-                  className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-medium disabled:opacity-60 disabled:cursor-not-allowed shadow-lg transition-all"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold disabled:opacity-60 disabled:cursor-not-allowed shadow-lg neon-glow hover-lift transition-all duration-300"
                 >
                   {loadingMore ? (
                     <span className="flex items-center gap-2">
