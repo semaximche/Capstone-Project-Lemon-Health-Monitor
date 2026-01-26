@@ -38,5 +38,5 @@ def create_access_token(data: dict, expires_minutes: int) -> str:
         raise RuntimeError(
             "JWT_SECRET_KEY is not set. Please set it in your .env file."
         )
-    print("jwt secret ket is:" +settings.jwt_secret_key )
+
     return jwt.encode(to_encode, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
