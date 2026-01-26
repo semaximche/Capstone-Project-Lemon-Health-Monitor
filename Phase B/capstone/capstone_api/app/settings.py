@@ -1,16 +1,31 @@
 """Application settings and configuration."""
 
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+# Find .env file - check project root first, then current directory
+# This works for both local dev (from project root) and Docker (from container working dir)
+_env_file_paths = [
+    Path(__file__).parent.parent.parent / ".env",  # Project root: capstone_api/app/settings.py -> root/.env
+    Path(".env"),  # Current directory (for Docker or if running from root)
+]
+
+_env_file = None
+for path in _env_file_paths:
+    if path.exists():
+        _env_file = str(path)
+        break
 
 
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=_env_file,
         env_file_encoding="utf-8",
         case_sensitive=False,
     )
@@ -35,11 +50,11 @@ class Settings(BaseSettings):
         default="../data_storage/storage",
         description="Storage type: local, s3, minio, or firebase",
     )
-    gemini_api_key: str = Field(default="AIzaSyC8v2RKgmKAgxsQyhGQp0ZEkxq5RFr5XXk")
+    gemini_api_key: str = Field(default="", description="Google Gemini API key")
     storage_bucket: str = Field(default="analysis", description="Storage bucket name")
     storage_endpoint: str | None = Field(default="users", description="Storage endpoint URL (for S3/Minio)")
     storage_access_key: str | None = Field(default="admin", description="Storage access key")
-    storage_secret_key: str | None = Field(default="admin12345", description="Storage secret key")
+    storage_secret_key: str | None = Field(default=None, description="Storage secret key")
 
     # Google OAuth settings
     google_client_id: str | None = Field(default=None, description="Google OAuth client ID")
@@ -51,7 +66,7 @@ class Settings(BaseSettings):
 
     # JWT settings
     jwt_secret_key: str = Field(
-        default="f4d34c2b0af0c67da891b63be1d2ccfb3a1ec9d5afbb08be71a47b31f28d9c62",
+        default="",
         description="Secret key for JWT token signing",
     )
     jwt_algorithm: str = Field(default="HS256", description="JWT algorithm")
@@ -93,6 +108,7 @@ class Settings(BaseSettings):
         default="openai",
         description="LLM provider: openai or ollama",
     )
+    openai_api_key: str = Field(default="", description="OpenAI API key")
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")
     ollama_url: str = Field(
         default="http://localhost:11434",
@@ -125,10 +141,4 @@ class Settings(BaseSettings):
     queue_user: str = Field(default="guest", description="RabbitMQ username")
     queue_password: str = Field(default="guest", description="RabbitMQ password")
 
-@lru_cache
-def get_settings() -> Settings:
-    """Get cached application settings."""
-    return Settings()
-
-
-settings = get_settings()
+settings = Settings()

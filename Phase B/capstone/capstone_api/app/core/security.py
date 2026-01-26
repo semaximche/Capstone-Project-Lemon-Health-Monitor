@@ -32,5 +32,11 @@ def create_access_token(data: dict, expires_minutes: int) -> str:
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=expires_minutes)
     to_encode.update({"exp": expire})
-
+    
+    # Read JWT secret key from settings (which loads from .env file)
+    if not settings.jwt_secret_key:
+        raise RuntimeError(
+            "JWT_SECRET_KEY is not set. Please set it in your .env file."
+        )
+    print("jwt secret ket is:" +settings.jwt_secret_key )
     return jwt.encode(to_encode, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
