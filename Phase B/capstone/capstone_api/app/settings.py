@@ -108,7 +108,7 @@ class Settings(BaseSettings):
         default="openai",
         description="LLM provider: openai or ollama",
     )
-    openai_api_key: str = Field(default="", description="OpenAI API key")
+    openai_api_key: str = Field(default="", description="OpenAI")
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")
     ollama_url: str = Field(
         default="http://localhost:11434",
