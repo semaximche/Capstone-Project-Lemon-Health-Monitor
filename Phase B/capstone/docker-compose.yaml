@@ -7,8 +7,8 @@ services:
       - "5672:5672" # RabbitMQ main port
       - "15672:15672" # Management UI
     environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: admin123
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     healthcheck:
       test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
       interval: 10s
@@ -19,9 +19,10 @@ services:
 
   # Main API service
   capstone_api:
-    build:
-      context: .
-      dockerfile: ./capstone_api/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: ./capstone_api/Dockerfile
+    image: davidkotler/backend-api:latest
     container_name: lemon-api
     ports:
       - "8000:8000"

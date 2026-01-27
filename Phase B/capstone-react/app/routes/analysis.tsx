@@ -4,6 +4,7 @@ import { fakeResultsData } from "~/fakeData/fakeAnalysisData";
 import { useAuth } from "~/provider/auth-context";
 import { useNavigate } from "react-router";
 import Alert from "~/components/alert";
+import { apiEndpoint } from "~/lib/api-config";
 
 export default function Analysis() {
   const [file, setFile] = useState<File | null>(null);
@@ -65,7 +66,7 @@ export default function Analysis() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch("http://127.0.0.1:8000/v1/analysis", {
+      const response = await fetch(apiEndpoint("analysis"), {
         method: "POST",
         headers: {
           Accept: "application/json",

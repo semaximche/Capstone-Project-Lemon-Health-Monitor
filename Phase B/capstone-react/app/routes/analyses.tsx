@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "~/provider/auth-context";
 import { useNavigate } from "react-router";
 import Alert from "~/components/alert";
+import { apiEndpoint } from "~/lib/api-config";
 
 interface AnalysisItem {
   id: string;
@@ -37,7 +38,7 @@ export default function Analyses() {
     setError(null);
 
     try {
-      const resp = await fetch(`http://127.0.0.1:8000/v1/me/analysis/?limit=${limit}&offset=${currentOffset}`, {
+      const resp = await fetch(apiEndpoint(`me/analysis/?limit=${limit}&offset=${currentOffset}`), {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: 'application/json'

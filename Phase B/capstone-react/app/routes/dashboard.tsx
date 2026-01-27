@@ -5,6 +5,7 @@ import Alert from "~/components/alert";
 import AnalysisDisplay from "~/components/analysisDisplay";
 import Markdown from "react-markdown";
 import type { AnalysisBox } from "~/types/analysis";
+import { apiEndpoint } from "~/lib/api-config";
 
 interface AnalysisDetails {
   id: string;
@@ -42,7 +43,7 @@ export default function Dashboard() {
       setError(null);
 
       try {
-        const resp = await fetch(`http://127.0.0.1:8000/v1/me/analysis/${selectedAnalysis.id}`, {
+        const resp = await fetch(apiEndpoint(`me/analysis/${selectedAnalysis.id}`), {
           headers: {
             Authorization: `Bearer ${token}`,
             Accept: 'application/json'

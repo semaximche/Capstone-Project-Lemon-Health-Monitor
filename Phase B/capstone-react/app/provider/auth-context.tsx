@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { apiEndpoint, getWebSocketUrl } from "~/lib/api-config";
 
 interface AnalysisData {
     id?: string;
@@ -96,8 +97,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const userId = getUserIdFromToken(token);
         if (!userId) return;
 
-        const scheme = 'ws';
-        const wsUrl = `${scheme}://127.0.0.1:8000/v1/ws/notifications/${userId}`;
+        const wsUrl = getWebSocketUrl(`/ws/notifications/${userId}`);
         try {
             ws = new WebSocket(wsUrl);
         } catch (e) {
@@ -168,7 +168,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         // Fetch analysis details from API if not cached
         try {
-            const resp = await fetch(`http://127.0.0.1:8000/v1/me/analysis/${aid}`, {
+            const resp = await fetch(apiEndpoint(`me/analysis/${aid}`), {
                 headers: token ? { Authorization: `Bearer ${token}`, Accept: 'application/json' } : { Accept: 'application/json' },
             });
             

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "~/provider/auth-context";
 import Alert from "~/components/alert";
+import { apiEndpoint } from "~/lib/api-config";
 
 interface Message {
   id: string;
@@ -66,7 +67,7 @@ export function ChatbotModal({ isOpen, onClose }: ChatbotModalProps) {
     setError(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/v1/chatbot/query", {
+      const response = await fetch(apiEndpoint("chatbot/query"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

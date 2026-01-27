@@ -1,10 +1,12 @@
+import { apiEndpoint } from "./api-config";
+
 export async function handleLogin(username :string, password: string) {
     try {
             const details = new URLSearchParams();
             details.append('username', username);
             details.append('password', password);
 
-            const response = await fetch('http://127.0.0.1:8000/v1/auth/login',{
+            const response = await fetch(apiEndpoint('auth/login'),{
                 method: 'POST',
                 headers: {
                     'accept': 'application/json',
@@ -47,7 +49,7 @@ export async function handleRegister(username: string, email: string, password: 
     try {
         const body = { username,password, email };
 
-        const response = await fetch('http://127.0.0.1:8000/v1/auth/signup', {
+        const response = await fetch(apiEndpoint('auth/signup'), {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
