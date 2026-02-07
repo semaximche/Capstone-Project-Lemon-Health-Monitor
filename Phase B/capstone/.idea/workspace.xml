@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f83ed5b-993d-49cd-9ae0-ecbb03170e37" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/capstone_api/app/utils/image_encoder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/provider/auth-context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/analyses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/analyses.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/analysis.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/analysis.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../capstone-react/app/routes/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/rag_service/db/chroma_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/rag_service/db/init_rag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/rag_service/llm/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/rag_service/llm/llm_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/rag_service/services/rag_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/rag_service/services/rag_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/rag_service/utils/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capstone_api/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/capstone_api/app/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +35,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -50,31 +58,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.gemini_model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.init_db (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.init_db.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.gemini_model.executor": "Run",
+    "Python.init_db (1).executor": "Run",
+    "Python.init_db.executor": "Run",
+    "Python.init_rag (1).executor": "Run",
+    "Python.init_rag.executor": "Run",
+    "Python.main (1).executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/college/Cloud/Capstone-Project-Lemon-Health-Monitor/Phase B/capstone",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\rag_service\utils" />
+      <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\rag_service" />
+      <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\rag_service\db" />
       <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\routes\v1\users" />
       <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\routes\v1" />
-      <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\db" />
-      <recent name="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.init_db (1)">
+  <component name="RunManager" selected="Python.init_rag (1)">
     <configuration name="gemini_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone" />
       <option name="ENV_FILES" value="" />
@@ -119,7 +131,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="init_db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="init_rag (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,11 +140,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app/db" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app/rag_service/db" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\db\init_db.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/app/rag_service/db/init_rag.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -141,7 +153,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="init_db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="init_rag" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="capstone" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,11 +162,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app/rag" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\college\Cloud\Capstone-Project-Lemon-Health-Monitor\Phase B\capstone\capstone_api\app\db\init_db.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/app/rag/init_rag.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -185,35 +197,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="capstone" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/capstone_api/app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/capstone_api/app/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.init_rag (1)" />
+        <item itemvalue="Python.init_rag" />
         <item itemvalue="Python.init_db (1)" />
         <item itemvalue="Python.gemini_model" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.init_db" />
       </list>
     </recent_temporary>
   </component>

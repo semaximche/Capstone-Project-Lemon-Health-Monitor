@@ -13,3 +13,7 @@ def get_llm_client():
         api_key=settings.gemini_api_key
     )
     return client
+
+from app.settings import settings
+from google import genai
+

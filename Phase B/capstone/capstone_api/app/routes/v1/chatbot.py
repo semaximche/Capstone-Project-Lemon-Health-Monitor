@@ -31,4 +31,3 @@ def query_chatbot(
             detail=f"Error processing query: {str(e)}",
         )
 
-

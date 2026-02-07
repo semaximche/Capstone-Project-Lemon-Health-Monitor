@@ -1,9 +1,6 @@
 services:
   capstone-react:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: capstone-react:latest
+    image: davidkotler/lemon-health:latest
     container_name: capstone-react-app
     ports:
       - "3000:3000"

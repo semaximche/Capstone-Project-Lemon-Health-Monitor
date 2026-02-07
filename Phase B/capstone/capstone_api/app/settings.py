@@ -118,7 +118,7 @@ class Settings(BaseSettings):
 
     # RAG settings
     rag_vector_db_path: str = Field(
-        default="../data_storage/vector_db",
+        default="",
         description="Path to vector database storage",
     )
     rag_embedding_model: str = Field(
@@ -134,7 +134,7 @@ class Settings(BaseSettings):
     rag_top_k: int = Field(default=5, description="Number of top results to retrieve from vector search")
 
     # Rabbitmq settings
-    queue_host: str = Field(default="localhost", description="Rabbitmq server host")
+    queue_host: str = Field(default="rabbitmq", description="Rabbitmq server host")
     analysis_queue_name: str = Field(default="disease_jobs", description="Rabbitmq queue name")
     notifications_queue_name: str = Field(default="notifications", description="notifications Rabbitmq queue name")
     events_exchange: str = Field(default="events_exchange", description="notifications Rabbitmq queue name")

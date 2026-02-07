@@ -31,25 +31,23 @@ services:
     environment:
       # Database settings
       DATABASE_URL: sqlite:////app/data_storage/mydb.sqlite3
-
       # Storage settings
       STORAGE_HOST: /app/data_storage/storage
       STORAGE_BUCKET: ${STORAGE_BUCKET:-analysis}
       STORAGE_ENDPOINT: ${STORAGE_ENDPOINT:-users}
       STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY:-admin}
-      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY}
-
+      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY:-admin}
       # RabbitMQ settings
-      QUEUE_HOST: rabbitmq
+      QUEUE_HOST: ${QUEUE_HOST:-rabbitmq}
       QUEUE_NAME: disease_jobs
-      QUEUE_USER: ${QUEUE_USER:-admin}
-      QUEUE_PASSWORD: ${QUEUE_PASSWORD}
+      QUEUE_USER: ${QUEUE_USER:-guest}
+      QUEUE_PASSWORD: ${QUEUE_PASSWORD:-guest}
 
       # RAG settings
-      RAG_VECTOR_DB_PATH: /app/data_storage/vector_db
+      RAG_VECTOR_DB_PATH: ${RAG_VECTOR_DB_PATH:-/app/data_storage/vector_db}
 
       # JWT settings
-      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-f4d34c2b0af0c67da891b63be1d2ccfb3a1ec9d5afbb08be71a47b31f28d9c62}
       JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
       JWT_ACCESS_TOKEN_EXPIRE_MINUTES: ${JWT_ACCESS_TOKEN_EXPIRE_MINUTES:-30}
       JWT_REFRESH_TOKEN_EXPIRE_DAYS: ${JWT_REFRESH_TOKEN_EXPIRE_DAYS:-7}
@@ -67,9 +65,10 @@ services:
 
   # Inference worker service
   inference:
-    build:
-      context: .
-      dockerfile: ./inference/Dockerfile
+#    build:
+#      context: .
+#      dockerfile: ./inference/Dockerfile
+    image: davidkotler/inference-worker:latest
     container_name: lemon-inference
     env_file:
       - .env
@@ -82,13 +81,16 @@ services:
       STORAGE_BUCKET: ${STORAGE_BUCKET:-analysis}
       STORAGE_ENDPOINT: ${STORAGE_ENDPOINT:-users}
       STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY:-admin}
-      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY}
+      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY:-admin}
 
       # RabbitMQ settings
-      QUEUE_HOST: rabbitmq
+      QUEUE_HOST: ${QUEUE_HOST:-rabbitmq}
       QUEUE_NAME: disease_jobs
-      QUEUE_USER: ${QUEUE_USER:-admin}
-      QUEUE_PASSWORD: ${QUEUE_PASSWORD}
+      QUEUE_USER: ${QUEUE_USER:-guest}
+      QUEUE_PASSWORD: ${QUEUE_PASSWORD:-guest}
+
+      # RAG settings
+      RAG_VECTOR_DB_PATH: ${RAG_VECTOR_DB_PATH:-/app/data_storage/vector_db}
     volumes:
       - ./data_storage:/app/data_storage
     depends_on:
