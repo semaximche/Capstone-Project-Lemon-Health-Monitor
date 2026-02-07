@@ -8,7 +8,7 @@
  */
 
 // API Base URL - Change this to your backend server address
-export const API_BASE_URL = "http://127.0.0.1:8000";
+export const API_BASE_URL = "http://13.60.236.8:8000";
 
 // API Version prefix
 export const API_VERSION = "/v1";
