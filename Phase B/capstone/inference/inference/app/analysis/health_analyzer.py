@@ -22,7 +22,7 @@ class LemonHealthAnalyzer:
 
     # File Paths
     YOLO_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
-    YOLO_FRUIT_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
+    YOLO_FRUIT_WEIGHTS_PATH = 'inference/app/yolo_fruits_only.pt'
     EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnet50epochs.pth'
 
     def __init__(self):
@@ -122,12 +122,11 @@ class LemonHealthAnalyzer:
                 # a "valid" rectange (x1 is left, x2 is right, y1 is top, y2 is bottom) continue
                 # otherwise break out of nested loop
                 if(overlap_left < overlap_right and overlap_bottom > overlap_top):
-                    print('detected')
                     overlap_detected = True
                     break
                 
             if(overlap_detected):
-                break
+                continue
             
             # crop the image using the `img` array loaded earlier
             cropped_image = img[y1_a:y2_a, x1_a:x2_a]
