@@ -22,6 +22,7 @@ class LemonHealthAnalyzer:
 
     # File Paths
     YOLO_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
+    YOLO_FRUIT_WEIGHTS_PATH = 'inference/app/yolo_fruits_only.pt'
     EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnet50epochs.pth'
 
     def __init__(self):
@@ -41,12 +42,21 @@ class LemonHealthAnalyzer:
 
         # 3. Model Loading
         self.yolo_model = self._load_yolo_model()
+        self.yolo_fruits_model = self._load_yolo_fruits_model()
         self.efficientnet_model = self._load_efficientnet_model()
 
     def _load_yolo_model(self) -> YOLO:
         """Loads the YOLO detection model."""
         try:
             return YOLO(self.YOLO_WEIGHTS_PATH)
+        except Exception as e:
+            print(f"Error loading YOLO model: {e}")
+            raise
+        
+    def _load_yolo_fruits_model(self) -> YOLO:
+        """Loads the YOLO detection model."""
+        try:
+            return YOLO(self.YOLO_FRUIT_WEIGHTS_PATH)
         except Exception as e:
             print(f"Error loading YOLO model: {e}")
             raise
@@ -89,15 +99,37 @@ class LemonHealthAnalyzer:
         # Note: Using the original image path here ensures YOLO's internal preprocessing is leveraged if needed.
         # However, using the loaded `img` array is also common. We'll use the path as in your original successful code:
         results = self.yolo_model.predict(image_path, conf=self.CONFIDENCE_THRESHOLD, verbose=False)
+        fruits_results = self.yolo_fruits_model.predict(image_path, conf=self.CONFIDENCE_THRESHOLD, verbose=False)
 
         final_results = []
 
         # 2. Iterate over detected boxes and run EfficientNet Classification
         print(f"Found {len(results[0].boxes)} objects. Running classification...")
         for i, box in enumerate(results[0].boxes.xyxy):
-            # Get coordinates and crop the image using the `img` array loaded earlier
-            x1, y1, x2, y2 = map(int, box[:4])
-            cropped_image = img[y1:y2, x1:x2]
+            # Get coordinates
+            x1_a, y1_a, x2_a, y2_a = map(int, box[:4])
+            overlap_detected = False
+            
+            # Iterate over fruits resutls
+            for j, fbox in enumerate(fruits_results[0].boxes.xyxy):
+                x1_b, y1_b, x2_b, y2_b = map(int, fbox[:4])
+                overlap_left = max(x1_a, x1_b)
+                overlap_right = min(x2_a, x2_b)
+                overlap_top = max(y1_a, y1_b)
+                overlap_bottom = min(y2_a, y2_b)
+                
+                # If the min/max coordinates form
+                # a "valid" rectange (x1 is left, x2 is right, y1 is top, y2 is bottom) continue
+                # otherwise break out of nested loop
+                if(overlap_left < overlap_right and overlap_bottom > overlap_top):
+                    overlap_detected = True
+                    break
+                
+            if(overlap_detected):
+                continue
+            
+            # crop the image using the `img` array loaded earlier
+            cropped_image = img[y1_a:y2_a, x1_a:x2_a]
 
             # Convert OpenCV (BGR) crop to PIL (RGB) for torchvision transforms
             pilimg = PIL.Image.fromarray(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))
@@ -119,7 +151,7 @@ class LemonHealthAnalyzer:
 
             # Create a structured result entry
             result_entry = {
-                "box": [x1, y1, x2, y2],
+                "box": [x1_a, y1_a, x2_a, y2_a],
                 "yolo_conf": float(results[0].boxes.conf[i]),
                 "efficientnet_class_name": self.CLASS_NAMES[predicted_class_idx.item()],
                 "efficientnet_confidence": confidence.item(),
