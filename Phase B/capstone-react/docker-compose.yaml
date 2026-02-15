@@ -1,6 +1,6 @@
 services:
   capstone-react:
-    image: davidkotler/lemon-health:latest
+    image: davidkotler/front-end:latest
     container_name: capstone-react-app
     ports:
       - "3000:3000"

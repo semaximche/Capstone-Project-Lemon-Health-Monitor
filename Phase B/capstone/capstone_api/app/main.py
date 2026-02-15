@@ -17,13 +17,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-origins = [
-    "http://localhost:5173", # Example frontend origin
-    "wss://localhost:5173",
-    "ws://localhost:5173",
-
-]
-
 # Add middlewares
 app.add_middleware(LoggingMiddleware)
 app.add_middleware(
