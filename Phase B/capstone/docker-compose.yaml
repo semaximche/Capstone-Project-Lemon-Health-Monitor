@@ -76,6 +76,7 @@ services:
       # Database settings
       DATABASE_URL: sqlite:////app/data_storage/mydb.sqlite3
 
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-AIzaSyC8v2RKgmKAgxsQyhGQp0ZEkxq5RFr5XXk}
       # Storage settings
       STORAGE_HOST: /app/data_storage/storage
       STORAGE_BUCKET: ${STORAGE_BUCKET:-analysis}
