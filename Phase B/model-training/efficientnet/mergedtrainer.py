@@ -419,8 +419,8 @@ def parse_args():
     
     parser.add_argument('--calc-batch-size', type=int, default=64, help='batch size for dataset mean and std calculation')
     parser.add_argument('--num-workers', type=int, default=3, help='workers number for training')
-    parser.add_argument('--learning-rate', type=float, default=0.001, help='initial learning rate to start training on')
-    parser.add_argument('--momentum', type=float, default=0.9, help='momentum to use for training')
+    parser.add_argument('--learning-rate', type=float, default=0.0001, help='initial learning rate to start training on')
+    parser.add_argument('--momentum', type=float, default=0.99, help='momentum to use for training')
     
     parser.add_argument('--mean', type=float, nargs='*', help='mean values for the dataset as a list')
     parser.add_argument('--std', type=float, nargs='*', help='standard deviation values for the dataset as a list')
