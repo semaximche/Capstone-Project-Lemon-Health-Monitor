@@ -21,8 +21,8 @@ class LemonHealthAnalyzer:
                    'Deficiency Leaf', 'Dry Leaf', 'Healthy Leaf', 'Sooty Mould', 'Spider Mites']
 
     # File Paths
-    YOLO_WEIGHTS_PATH = 'inference/app/yolo100epochs.pt'
-    YOLO_FRUIT_WEIGHTS_PATH = 'inference/app/yolo_fruits_only.pt'
+    YOLO_WEIGHTS_PATH = 'inference/app/leaves640imgz100epochs.pt'
+    YOLO_FRUIT_WEIGHTS_PATH = 'inference/app/fruits1024imgz100epochs.pt'
     EFFICIENTNET_WEIGHTS_PATH = 'inference/app/efficientnet50epochs.pth'
 
     def __init__(self):
